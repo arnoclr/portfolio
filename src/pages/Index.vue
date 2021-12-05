@@ -5,6 +5,7 @@
       <p class="ac-pane__description">
         Bonjour, actuellement étudiant en BUT informatique, je conçois des sites internet.
       </p>
+      <span class="ac-pane__arrow">↓</span>
     </div>
     <div class="ac-pane ac-pane--white"></div>
     <div class="ac-pane ac-pane--black"></div>

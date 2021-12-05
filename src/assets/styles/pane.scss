@@ -6,14 +6,24 @@
         @include font-family;
         font-size: 5rem;
         font-weight: 500;
+        line-height: 68px;
         color: #000;
     }
 
     &__description {
-        font-family: TeXGyreHeros, sans-serif;
+        @include font-family;
         font-size: 2rem;
         font-weight: 500;
+        line-height: 34px;
         color: #000;
+    }
+
+    &__arrow {
+        display: block;
+        @include font-family;
+        font-size: 5rem;
+        font-weight: 500;
+        color: $color-primary;
     }
 
     &--box {
