@@ -1,0 +1,39 @@
+.ac-pane {
+    height: 100vh;
+    width: auto;
+
+    &__title {
+        @include font-family;
+        font-size: 5rem;
+        font-weight: 500;
+        color: #000;
+    }
+
+    &__description {
+        font-family: TeXGyreHeros, sans-serif;
+        font-size: 2rem;
+        font-weight: 500;
+        color: #000;
+    }
+
+    &--box {
+        padding: 64px 10vw;
+
+        @media screen and (max-width: 768px) {
+            padding: 16px;
+        }
+    }
+
+    &--grey {
+        background-color: $color-grey;
+        color: $color-dark;
+    }
+
+    &--white {
+        background-color: #fff;
+    }
+
+    &--black {
+        background-color: $color-dark;
+    }
+}
