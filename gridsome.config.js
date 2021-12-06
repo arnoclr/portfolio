@@ -6,5 +6,32 @@
 
 module.exports = {
   siteName: 'Arno Cellarier',
-  plugins: []
+  siteDescription: 'Write a description here',
+  siteUrl: '//arnocellarier.fr',
+  plugins: [
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'projects/**/*.md',
+        typeName: 'Project',
+        refs: {
+          dependencies: {
+            typeName: 'Dependency',
+            create: true
+          }
+        }
+      }
+    }
+  ],
+  templates: {
+    Project: '/project/:path'
+  },
+  transformers: {
+    remark: {
+      autolinkClassName: 'icon icon-link heading-anchor',
+      externalLinksTarget: '_blank',
+      externalLinksRel: ['noopener', ],
+      anchorClassName: 'icon icon-link'
+    }
+  }
 }
