@@ -18,12 +18,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arnoclr/portfolio.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/arnoclr/portfolio/issues"
-  },
-  "homepage": "https://github.com/arnoclr/portfolio#readme"
+  }
 }
