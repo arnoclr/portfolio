@@ -1,0 +1,67 @@
+$color: rgb(18, 99, 22);
+
+@font-face {
+    font-family: Karrik Regular;
+    src: url('/static/fonts/Karrik-Regular.woff2');
+}
+
+body {
+    font-family: Karrik Regular;
+}
+
+.projects-title {
+    font-weight: 400;
+    font-size: 3rem;
+    color: $color;
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+
+    &__item {
+        display: flex;
+
+        &-img {
+            width: 350px;
+            height: 450px;
+            object-fit: cover;
+            object-position: bottom;
+        }
+
+        &-title {
+            font-size: 3rem;
+            font-weight: 400;
+            writing-mode: vertical-lr;
+            text-align: end;
+            margin-left: 0;
+            color: $color;
+        }
+    }
+}
+
+.footer {
+    margin-top: 32px;
+    padding: 16px 0;
+    border-top: 2px solid $color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__links {
+        display: flex;
+        gap: 32px;
+
+        &-link {
+            color: $color;
+            text-decoration: none;
+            font-size: 1.7rem;
+            border-bottom: 2px dashed transparent;
+
+            &:hover {
+                border-bottom: 2px dashed $color;
+            }
+        }
+    }
+}
