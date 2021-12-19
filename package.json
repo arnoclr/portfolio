@@ -7,7 +7,7 @@
     "@parcel/transformer-sass": "^2.0.1",
     "parcel": "^2.0.1",
     "sharp": "^0.29.3",
-    "uglify-classes": "^1.0.1"
+    "uglify-classes": "^1.1.0"
   },
   "dependencies": {},
   "scripts": {
