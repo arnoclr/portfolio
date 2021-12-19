@@ -6,6 +6,11 @@ $background: rgb(220, 243, 221);
     --padding: 16px;
 }
 
+*::selection {
+    background-color: $color;
+    color: $background;
+}
+
 @media screen and (min-width: 768px) {
     :root {
         --padding: 8vw;
@@ -102,7 +107,7 @@ body {
 
 .footer {
     margin-top: 32px;
-    padding: 16px 0;
+    padding: 16px var(--padding);
     border-top: 2px solid $color;
     display: flex;
     justify-content: space-between;
