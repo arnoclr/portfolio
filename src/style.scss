@@ -1,6 +1,7 @@
 $color: rgb(18, 99, 22);
 $color-hover: rgb(15, 65, 18);
 $background: rgb(220, 243, 221);
+$image-width: 350px;
 
 :root {
     --padding: 16px;
@@ -53,7 +54,7 @@ body {
         }
 
         &-img {
-            width: 350px;
+            width: $image-width;
             height: 450px;
             object-fit: cover;
             object-position: bottom;
@@ -124,11 +125,25 @@ body {
         &-link {
             color: $color;
             text-decoration: none;
-            font-size: 1.7rem;
+            font-size: 1.2rem;
             border-bottom: 2px dashed transparent;
 
             &:hover {
                 border-bottom: 2px dashed $color;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+        display: block;
+
+        &__links {
+            display: block;
+
+            &-link {
+                display: block;
+                margin: 16px 0;
+                width: fit-content;
             }
         }
     }
@@ -138,5 +153,101 @@ body {
     position: fixed;
     object-fit: cover;
     object-position: bottom;
-    transition: all .3s ease;
+    transition: all .3s cubic-bezier(.62,.08,.05,.87);
+}
+
+.projects-details {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    white-space: nowrap;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+
+    &__page {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        display: inline-flex;
+        width: 100vw;
+        white-space: initial;
+
+        &-thumb {
+            height: 100%;
+            width: $image-width;
+            object-fit: cover;
+            object-position: bottom;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        &-content {
+            padding: 32px;
+            width: calc(100vw - $image-width - 32px);
+            transition: opacity .3s ease, transform .4s cubic-bezier(.96,.34,.45,.93), border-radius .7s ease;
+            transform: scale(0);
+            transform-origin: left;
+            background-color: $background;
+            opacity: 0;
+            border-radius: 256px;
+
+            h1, h2, h3, p {
+                font-weight: 400;
+                color: $color;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            display: block;
+
+            &-content {
+                width: 100vw;
+                transform-origin: top;
+            }
+
+            &-thumb {
+                height: 300px;
+                width: 100%;
+            }
+        }
+    }
+
+    &.start {
+        display: flex;
+
+        .projects-details {
+            &__page-content {
+                opacity: 0;
+            }
+
+            &__page-thumb {
+                opacity: 0;
+            }
+        }
+    }
+
+    &.middle {
+        .projects-details {
+            &__page-content {
+                border-radius: 0px;
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            &__page-thumb {
+                opacity: 0;
+            }
+        }
+    }
+
+    &.end {
+        .projects-details {
+            &__page-content {
+                opacity: 1;
+            }
+            &__page-thumb {
+                opacity: 1;
+            }
+        }
+    }
 }

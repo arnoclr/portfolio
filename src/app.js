@@ -8,19 +8,45 @@ if (navigator.language.includes('fr')) {
 
 const projectsBoxes = document.querySelectorAll('.js-project');
 const slider = document.querySelector('.js-slider');
+const pages = document.querySelector('.js-pages');
 
 projectsBoxes.forEach(box => {
   let img = box.querySelector('img');
 
   img.addEventListener('click', e => {
-    console.log(box, img)
+    img.style.visibility = 'hidden';
     let placeholder = createPlaceholder(img);
+    
     // animation
     setTimeout(() => {
-      placeholder.style.height = window.innerHeight + 'px';
+      pages.classList.add('start');
       placeholder.style.top ='0px';
       placeholder.style.left ='0px';
-    }, 1);  
+
+      if (window.innerWidth > 768) {
+        placeholder.style.height = window.innerHeight + 'px';
+      } else {
+        placeholder.style.height = '300px';
+        placeholder.style.width = window.innerWidth + 'px';
+      }
+    }, 1);
+
+    const page = document.getElementById(box.dataset.to)
+
+    setTimeout(() => {
+      pages.classList.add('middle');
+      const offset = getOffset(img);
+      page.querySelector('.projects-details__page-content').style.transformOrigin = `${window.innerHeight / offset.top}% ${window.innerWidth / offset.left}%`;
+    }, 10);
+
+    // remove placeholder after animation
+    setTimeout(() => {
+      pages.classList.add('end');
+      placeholder.remove();
+      img.style.visibility = 'visible';
+      document.querySelector('html').style.overflow = 'hidden';
+      page.scrollIntoView({behavior: 'instant'});
+    }, 301);
   });
 })
 
@@ -35,7 +61,7 @@ function createPlaceholder(img) {
   placeholder.style.top = position.top + 'px'
   placeholder.style.left = position.left - slider.scrollLeft + 'px'
 
-  placeholder.src = img.src.replace(/\?.+/, '');
+  placeholder.src = img.src
 
   img.parentNode.insertBefore(placeholder, img);
 
