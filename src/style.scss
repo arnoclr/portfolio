@@ -57,6 +57,9 @@ body {
             height: 450px;
             object-fit: cover;
             object-position: bottom;
+            cursor: crosshair;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
         &-title {
@@ -86,6 +89,7 @@ body {
             border-left: var(--padding) $background solid;
             border-right: 8px $background solid;
             background-clip: padding-box;
+            cursor: ew-resize;
 
             &:hover {
                 background: $color-hover;
@@ -128,4 +132,11 @@ body {
             }
         }
     }
+}
+
+.js-placeholder {
+    position: fixed;
+    object-fit: cover;
+    object-position: bottom;
+    transition: all .3s ease;
 }
