@@ -43,10 +43,14 @@ projectsBoxes.forEach(box => {
     setTimeout(() => {
       pages.classList.add('end');
       placeholder.remove();
-      img.style.visibility = 'visible';
       document.querySelector('html').style.overflow = 'hidden';
       page.scrollIntoView({behavior: 'instant'});
     }, 301);
+
+    // unhide image
+    setTimeout(() => {
+      img.style.visibility = 'visible';
+    }, 1000);
   });
 })
 

@@ -165,6 +165,20 @@ body {
     overflow-x: hidden;
     scroll-snap-type: x mandatory;
 
+    &__back {
+        border: none;
+        position: fixed;
+        width: 48px;
+        height: 48px;
+        left: 32px;
+        top: 32px;
+        font-size: 28px;
+        font-family: Material Icons Sharp;
+        background-color: transparent;
+        backdrop-filter: blur(2px);
+        color: #fff;
+    }
+
     &__page {
         scroll-snap-align: start;
         scroll-snap-stop: always;
@@ -175,6 +189,7 @@ body {
         &-thumb {
             height: 100%;
             width: $image-width;
+            display: block;
             object-fit: cover;
             object-position: bottom;
             user-select: none;
@@ -184,12 +199,11 @@ body {
         &-content {
             padding: 32px;
             width: calc(100vw - $image-width - 32px);
-            transition: opacity .3s ease, transform .4s cubic-bezier(.96,.34,.45,.93), border-radius .7s ease;
-            transform: scale(0);
+            transition: opacity .4s ease, transform .2s cubic-bezier(.19,1.01,.47,.97);
+            transform: scaleY(2.5);
             transform-origin: left;
             background-color: $background;
             opacity: 0;
-            border-radius: 256px;
 
             h1, h2, h3, p {
                 font-weight: 400;
@@ -229,9 +243,8 @@ body {
     &.middle {
         .projects-details {
             &__page-content {
-                border-radius: 0px;
-                opacity: 0.7;
-                transform: scale(1);
+                opacity: 0;
+                transform: scaleY(2.5);
             }
 
             &__page-thumb {
@@ -244,7 +257,9 @@ body {
         .projects-details {
             &__page-content {
                 opacity: 1;
+                transform: scaleY(1);
             }
+
             &__page-thumb {
                 opacity: 1;
             }
