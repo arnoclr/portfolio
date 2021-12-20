@@ -203,7 +203,7 @@ body {
             width: calc(100vw - $image-width - 32px);
             transition: opacity .4s ease, transform .2s cubic-bezier(.19,1.01,.47,.97);
             transform: scaleY(2.5);
-            transform-origin: left;
+            transform-origin: top;
             background-color: $background;
             opacity: 0;
 

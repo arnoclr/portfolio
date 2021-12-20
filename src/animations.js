@@ -24,7 +24,7 @@ projectsBoxes.forEach(box => {
     setTimeout(() => {
       pages.classList.add('middle');
       const offset = getOffset(img);
-      page.querySelector('.projects-details__page-content').style.transformOrigin = `${window.innerHeight / offset.top}% ${window.innerWidth / offset.left}%`;
+      // page.querySelector('.projects-details__page-content').style.transformOrigin = `${window.innerHeight / offset.top}% ${window.innerWidth / offset.left}%`;
     }, 10);
 
     // remove placeholder after animation
@@ -45,8 +45,8 @@ projectsBoxes.forEach(box => {
 let backBtn = document.querySelector('.js-close-pages');
 
 backBtn.addEventListener('click', e => {
-  placeholder = createPlaceholder(openedImg);
-  placeholderRef = {
+  let placeholder = createPlaceholder(openedImg);
+  let placeholderRef = {
     width: placeholder.style.width,
     height: placeholder.style.height,
     top: placeholder.style.top,
