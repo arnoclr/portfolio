@@ -176,7 +176,9 @@ body {
         font-family: Material Icons Sharp;
         background-color: transparent;
         backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
         color: #fff;
+        cursor: zoom-out;
     }
 
     &__page {
