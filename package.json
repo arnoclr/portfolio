@@ -7,11 +7,11 @@
     "@parcel/transformer-sass": "^2.0.1",
     "parcel": "^2.0.1",
     "sharp": "^0.29.3",
-    "uglify-classes": "^1.1.1"
+    "uglify-classes": "^1.2.1"
   },
   "dependencies": {},
   "scripts": {
-    "build": "parcel build index.html",
+    "build": "parcel build index.html && uglify-classes --method random:3",
     "dev": "npx parcel"
   },
   "repository": {
