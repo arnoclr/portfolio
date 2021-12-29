@@ -11,7 +11,7 @@
   },
   "dependencies": {},
   "scripts": {
-    "build": "parcel build index.html && uglify-classes --method random:3",
+    "build": "parcel build index.html 404.html && uglify-classes --method random:3",
     "dev": "npx parcel"
   },
   "repository": {
