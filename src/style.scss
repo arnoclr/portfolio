@@ -1,6 +1,6 @@
-$color: rgb(18, 99, 22);
-$color-hover: rgb(15, 65, 18);
-$background: rgb(220, 243, 221);
+$color: #013b01;
+$color-hover: #000000;
+$background: #ecf3f2;
 $image-width: 350px;
 
 :root {
@@ -71,6 +71,13 @@ body {
             margin-left: 0;
             color: $color;
         }
+
+        /* animations */
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}) {
+                animation: hide (($i)-1) * 0.1s, slide-in-from-left (6-($i)) * 0.1s cubic-bezier(.32,.21,0,.97) (($i)-1) * 0.1s;
+            }
+        }
     }
 
     @media screen and (min-width: 768px) {
@@ -96,6 +103,28 @@ body {
                 background: $color-hover;
             }
         }
+    }
+}
+
+@keyframes slide-in-from-left {
+    0% {
+        transform:  translateX(-25%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
 
