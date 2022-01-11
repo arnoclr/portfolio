@@ -159,10 +159,10 @@ body {
             color: $color;
             text-decoration: none;
             font-size: 1.2rem;
-            border-bottom: 2px dashed transparent;
+            border-bottom: 2px dotted transparent;
 
             &:hover {
-                border-bottom: 2px dashed $color;
+                border-bottom: 2px dotted $color;
             }
         }
     }
