@@ -18,15 +18,11 @@ $image-width: 350px;
     }
 }
 
-@font-face {
-    font-family: Karrik Regular;
-    src: url('/static/fonts/Karrik-Regular.woff2');
-}
-
 body {
     margin: 0;
     padding: 0;
-    font-family: Karrik Regular;
+    font-family: Arial, sans-serif;
+    letter-spacing: -0.05em;
     background-color: $background;
 }
 
