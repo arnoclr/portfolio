@@ -26,6 +26,21 @@ body {
     background-color: $background;
 }
 
+p, a {
+    font-size: 16px;
+    line-height: 18px;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+}
+
+a {
+    border-bottom: 1px dotted $color;
+}
+
+a:hover {
+    border-bottom: 1px dotted transparent;
+}
+
 .projects {
     padding: 32px 0;
 
@@ -235,10 +250,17 @@ body {
             transform-origin: top;
             background-color: $background;
             opacity: 0;
+            overflow-y: scroll;
 
             h1, h2, h3, p {
                 font-weight: 400;
                 color: $color;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                max-height: 300px;
             }
         }
 
