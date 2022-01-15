@@ -209,6 +209,7 @@ a:hover {
     z-index: 9;
     white-space: nowrap;
     overflow-x: scroll;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
 
     &__back {
@@ -234,6 +235,9 @@ a:hover {
         display: inline-flex;
         width: 100vw;
         white-space: initial;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        flex-shrink: 0;
 
         &-thumb {
             height: 100%;
