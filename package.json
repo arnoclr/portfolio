@@ -4,12 +4,13 @@
   "description": "",
   "source": "index.html",
   "devDependencies": {
+    "@parcel/optimizer-data-url": "^2.2.0",
+    "@parcel/transformer-inline-string": "^2.2.0",
     "@parcel/transformer-sass": "^2.0.1",
     "parcel": "^2.0.1",
     "sharp": "^0.29.3",
     "uglify-classes": "^1.2.1"
   },
-  "dependencies": {},
   "scripts": {
     "build": "parcel build index.html 404.html && uglify-classes --method random:3",
     "dev": "npx parcel"
