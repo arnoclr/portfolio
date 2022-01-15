@@ -24,6 +24,7 @@ body {
     font-family: Arial, sans-serif;
     letter-spacing: -0.05em;
     background-color: $background;
+    cursor: crosshair;
 }
 
 p, a {
@@ -69,7 +70,7 @@ a:hover {
             height: 450px;
             object-fit: cover;
             object-position: bottom;
-            cursor: crosshair;
+            cursor: pointer;
             user-select: none;
             -webkit-user-drag: none;
 
@@ -253,6 +254,10 @@ a:hover {
             opacity: 0;
             overflow-y: scroll;
 
+            &-actions {
+                padding: 32px 0;
+            }
+
             h1, h2, h3, p {
                 font-weight: 400;
                 color: $color;
@@ -278,7 +283,7 @@ a:hover {
                     margin: 32px 16px;
                 }
 
-                img {
+                img, &__actions {
                     margin-left: 16px;
                 }
             }
@@ -328,5 +333,27 @@ a:hover {
                 opacity: 1;
             }
         }
+    }
+}
+
+.btn {
+    padding: 12px 24px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: $color;
+    color: $background;
+    font-size: 18px;
+    text-decoration: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+        border-bottom: 2px dotted $background;
+    }
+
+    &--open-in-new {
+        cursor: alias;
     }
 }
