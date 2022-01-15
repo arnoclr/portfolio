@@ -223,6 +223,7 @@ a:hover {
         -webkit-backdrop-filter: blur(2px);
         color: #fff;
         cursor: zoom-out;
+        z-index: 99;
     }
 
     &__page {
@@ -269,8 +270,17 @@ a:hover {
             display: block;
 
             &-content {
+                padding: 0;
                 width: 100vw;
                 transform-origin: top;
+
+                h2, h3, p {
+                    margin: 32px 16px;
+                }
+
+                img {
+                    margin-left: 16px;
+                }
             }
 
             &-thumb {
