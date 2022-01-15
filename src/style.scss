@@ -1,6 +1,7 @@
 $color: #013b01;
 $color-hover: #000000;
 $background: #ecf3f2;
+$background-surface: #ddebe7;
 $image-width: 350px;
 
 :root {
@@ -207,7 +208,7 @@ a:hover {
     inset: 0;
     z-index: 9;
     white-space: nowrap;
-    overflow-x: hidden;
+    overflow-x: scroll;
     scroll-snap-type: x mandatory;
 
     &__back {
@@ -255,6 +256,8 @@ a:hover {
             overflow-y: scroll;
 
             &-actions {
+                display: flex;
+                gap: 8px;
                 padding: 32px 0;
             }
 
@@ -283,8 +286,14 @@ a:hover {
                     margin: 32px 16px;
                 }
 
-                img, &__actions {
-                    margin-left: 16px;
+                img {
+                    padding-left: 16px;
+                    max-width: calc(100% - 16px);
+                }
+
+                &-actions {
+                    margin: 0;
+                    padding: 32px 16px;
                 }
             }
 
@@ -342,15 +351,24 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 12px;
-    background-color: $color;
-    color: $background;
+    background-color: $background-surface;
+    color: $color;
     font-size: 18px;
     text-decoration: none;
     border: none;
     border-bottom: 2px solid transparent;
 
     &:hover {
-        border-bottom: 2px dotted $background;
+        border-bottom: 2px dotted $color;
+    }
+
+    &--colored {
+        background-color: $color;
+        color: $background;
+
+        &:hover {
+            border-bottom: 2px dotted $background;
+        }
     }
 
     &--open-in-new {

@@ -3,9 +3,12 @@ const slider = document.querySelector('.js-slider');
 const pages = document.querySelector('.js-pages');
 
 let openedImg = null;
+const projectsImages = [];
 
 projectsBoxes.forEach(box => {
   let img = box.querySelector('img');
+
+  projectsImages.push(img);
 
   img.addEventListener('click', e => {
     e.preventDefault();
@@ -38,11 +41,30 @@ projectsBoxes.forEach(box => {
     // unhide image
     setTimeout(() => {
       img.style.visibility = 'visible';
-    }, 1000);
+    }, 700);
   });
 })
 
 let backBtn = document.querySelector('.js-close-pages');
+
+pages.addEventListener('scroll', () => {
+  let openedProject = Math.round(pages.scrollLeft / window.innerWidth);
+
+  openedImg = projectsImages[openedProject];
+})
+
+const nextBtns = document.querySelectorAll('.js-next-project');
+
+nextBtns.forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    pages.scrollTo({
+      top: 0,
+      left: pages.scrollLeft + window.innerWidth,
+      behavior: 'smooth'
+    });
+  });
+})
 
 backBtn.addEventListener('click', e => {
   let placeholder = createPlaceholder(openedImg);
