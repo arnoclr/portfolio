@@ -19,7 +19,7 @@ projectsBoxes.forEach(box => {
     // animation
     setTimeout(() => {
       pages.classList.add('start');
-      endPlaceholder(placeholder);
+      endPlaceholder(placeholder, true);
     }, 1);
 
     const page = document.getElementById(box.dataset.to)
@@ -74,7 +74,7 @@ backBtn.addEventListener('click', e => {
     top: placeholder.style.top,
     left: placeholder.style.left
   };
-  endPlaceholder(placeholder);
+  endPlaceholder(placeholder, false);
   pages.classList.remove('end');
   openedImg.style.visibility = 'hidden';
 
@@ -94,7 +94,10 @@ backBtn.addEventListener('click', e => {
   }, 300);
 })
 
-function endPlaceholder(placeholder) {
+function endPlaceholder(placeholder, transition) {
+  // disable timing animation when place image at the first position and then reenable it
+  !transition && placeholder.classList.add('js-notransition');
+
   placeholder.style.top ='0px';
   placeholder.style.left ='0px';
 
@@ -104,6 +107,9 @@ function endPlaceholder(placeholder) {
     placeholder.style.height = '300px';
     placeholder.style.width = window.innerWidth + 'px';
   }
+
+  placeholder.offsetHeight;
+  placeholder.classList.remove('js-notransition');
 }
 
 function createPlaceholder(img) {
