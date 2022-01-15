@@ -17,18 +17,14 @@ projectsBoxes.forEach(box => {
     let placeholder = createPlaceholder(img);
     
     // animation
-    setTimeout(() => {
-      pages.classList.add('start');
-      endPlaceholder(placeholder, true);
-    }, 1);
+    pages.classList.add('start');
+    placeholder.offsetHeight;
+    endPlaceholder(placeholder, true);
 
     const page = document.getElementById(box.dataset.to)
-
-    setTimeout(() => {
-      pages.classList.add('middle');
-      const offset = getOffset(img);
-      // page.querySelector('.projects-details__page-content').style.transformOrigin = `${window.innerHeight / offset.top}% ${window.innerWidth / offset.left}%`;
-    }, 10);
+    
+    pages.classList.add('middle');
+    const offset = getOffset(img);
 
     // remove placeholder after animation
     setTimeout(() => {
@@ -78,12 +74,10 @@ backBtn.addEventListener('click', e => {
   pages.classList.remove('end');
   openedImg.style.visibility = 'hidden';
 
-  setTimeout(() => {
-    placeholder.style.top = placeholderRef.top;
-    placeholder.style.left = placeholderRef.left;
-    placeholder.style.height = placeholderRef.height;
-    placeholder.style.width = placeholderRef.width;
-  }, 1);
+  placeholder.style.top = placeholderRef.top;
+  placeholder.style.left = placeholderRef.left;
+  placeholder.style.height = placeholderRef.height;
+  placeholder.style.width = placeholderRef.width;
 
   setTimeout(() => {
     pages.classList.remove('start');
