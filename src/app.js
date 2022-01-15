@@ -13,7 +13,7 @@ var observer = new IntersectionObserver(
   (entries, observer) => {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0.0) {
-        img = entry.target;
+        let img = entry.target;
         if (!img.hasAttribute('loaded')) {
           // find the noscript tag just below the image
           const noscript = img.nextElementSibling;
