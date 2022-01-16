@@ -236,7 +236,7 @@ a:hover {
         width: 100vw;
         white-space: initial;
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: hidden;
         flex-shrink: 0;
 
         &-thumb {
@@ -279,6 +279,7 @@ a:hover {
 
         @media screen and (max-width: 768px) {
             display: block;
+            overflow-y: scroll;
 
             &-content {
                 padding: 0;
