@@ -79,7 +79,7 @@ a:hover {
     gap: 48px;
 
     &__title  {
-        font-size: 92px;
+        font-size: 5rem;
         line-height: 70px;
         font-weight: 400;
         font-family: Nimbus Sans;
@@ -114,20 +114,35 @@ a:hover {
             cursor: pointer;
         }
 
-        @media screen and (max-width: 900px) {
+        @media screen and (max-width: 1000px) {
             grid-template-columns: 1fr;
+            gap: 0;
+
+            p {
+                margin: 0;
+                margin-bottom: 16px;
+            }
+
+            &-arrow {
+                display: none !important;
+            }
         }
+    }
+
+    @media screen and (max-width: 768px) {
+        margin: 64px 16px;
     }
 }
 
 .projects {
     padding: 32px 0;
+    background-color: #000;
 
     &__title {
         margin: 32px var(--padding);
         font-weight: 400;
-        font-size: 3rem;
-        color: $color;
+        font-size: 4rem;
+        color: $background
     }
 }
 
@@ -153,17 +168,17 @@ a:hover {
             -webkit-user-drag: none;
 
             &:hover {
-                outline: 2px dotted $color;
+                outline: 2px dotted $background;
             }
         }
 
         &-title {
-            font-size: 3rem;
+            font-size: 1.6rem;
             font-weight: 400;
             writing-mode: vertical-lr;
             text-align: end;
             margin-left: 0;
-            color: $color;
+            color: $background;
         }
 
         /* animations */
@@ -183,18 +198,18 @@ a:hover {
 
         &::-webkit-scrollbar-track {
             background-color: transparent;
-            border-bottom: 1px solid $color;
+            border-bottom: 1px solid transparent;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: $color;
-            border-left: var(--padding) $background solid;
-            border-right: 8px $background solid;
+            background: $background;
+            border-left: var(--padding) #000 solid;
+            border-right: 8px #000 solid;
             background-clip: padding-box;
             cursor: ew-resize;
 
             &:hover {
-                background: $color-hover;
+                background: $color;
             }
         }
     }
@@ -222,21 +237,9 @@ a:hover {
     }
 }
 
-.experiments {
-    padding: 32px var(--padding);
-    background-color: #000;
-
-    &__title {
-        font-weight: 400;
-        font-size: 3rem;
-        color: $background;
-    }
-}
-
 .footer {
     margin-top: 32px;
     padding: 16px var(--padding);
-    border-top: 2px solid $color;
     display: flex;
     justify-content: space-between;
     align-items: center;
