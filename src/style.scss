@@ -19,10 +19,22 @@ $image-width: 350px;
     }
 }
 
+@font-face {
+    font-family: Nimbus Sans;
+    src: url("/static/fonts/NimbusSanL-Bol.otf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Nimbus Sans;
+    src: url("/static/fonts/NimbusSanL-Reg.otf");
+    font-weight: 400;
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: Nimbus Sans, Arial, sans-serif;
     letter-spacing: -0.05em;
     background-color: $background;
     cursor: crosshair;
@@ -41,6 +53,58 @@ a {
 
 a:hover {
     border-bottom: 1px dotted transparent;
+}
+
+.material-icons-sharp {
+    user-select: none;
+}
+
+.header {
+    margin: var(--padding);
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    &__title  {
+        font-size: 92px;
+        line-height: 70px;
+        font-weight: 400;
+        font-family: Nimbus Sans;
+        letter-spacing: -4px;
+        margin: 0;
+    }
+
+    &__groups {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 48px;
+        position: relative;
+
+        &-item {
+            p {
+                font-size: 20px;
+                line-height: 22px;
+            }
+
+            &-btns {
+                display: flex;
+                gap: 4px;
+            }
+        }
+
+        &-arrow {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            font-size: 90px !important;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 900px) {
+            grid-template-columns: 1fr;
+        }
+    }
 }
 
 .projects {

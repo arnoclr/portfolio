@@ -1,4 +1,5 @@
 const projectsBoxes = document.querySelectorAll('.js-project');
+const projects = document.querySelector('.js-projects');
 const slider = document.querySelector('.js-slider');
 const pages = document.querySelector('.js-pages');
 
@@ -87,6 +88,13 @@ backBtn.addEventListener('click', e => {
     document.querySelector('html').style.overflow = 'auto';
   }, 300);
 })
+
+// scroll down button
+const scrollDown = document.querySelector('.js-scroll-down');
+
+scrollDown.addEventListener('click', () => {
+  projects.scrollIntoView({behavior: 'smooth'});
+});
 
 function endPlaceholder(placeholder, transition) {
   // disable timing animation when place image at the first position and then reenable it
