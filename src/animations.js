@@ -16,6 +16,9 @@ projectsBoxes.forEach(box => {
     openedImg = img;
     img.style.visibility = 'hidden';
     let placeholder = createPlaceholder(img);
+
+    // store project name in session storage
+    sessionStorage.setItem('js-opened-project', box.dataset.to);
     
     // animation
     pages.classList.add('start');
@@ -64,6 +67,8 @@ nextBtns.forEach(btn => {
 })
 
 backBtn.addEventListener('click', e => {
+  e.preventDefault();
+  sessionStorage.removeItem('js-opened-project');
   let placeholder = createPlaceholder(openedImg);
   let placeholderRef = {
     width: placeholder.style.width,

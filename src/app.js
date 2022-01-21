@@ -39,18 +39,23 @@ images.forEach(img => {
   observer.observe(img);
 });
 
-// check if project is passed in url
-const urlParams = new URLSearchParams(window.location.search);
-const project = urlParams.get('open');
-
-if (project) {
-  const projectImg = document.querySelector(`[data-to="p:${project}"]`).querySelector('img');
+function open(project) {
+  const projectImg = document.querySelector(`[data-to="${project}"]`).querySelector('img');
   if (projectImg) {
     projectImg.click();
     // clean url
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 }
+
+// ckech if project is present in session storage
+let project = sessionStorage.getItem('js-opened-project');
+
+// check if project is passed in url
+const urlParams = new URLSearchParams(window.location.search);
+project = project || "p:" + urlParams.get('open');
+
+if (project) open(project);
 
 // check if is the first of april
 const date = new Date();
