@@ -129,6 +129,16 @@ a:hover {
         }
     }
 
+    &__links {
+        display: flex;
+        gap: 16px;
+
+        &-link {
+            color: $color;
+            cursor: alias;
+        }
+    }
+
     @media screen and (max-width: 768px) {
         margin: 64px 16px;
     }
@@ -142,6 +152,7 @@ a:hover {
         margin: 32px var(--padding);
         font-weight: 400;
         font-size: 4rem;
+        letter-spacing: -2px;
         color: $background
     }
 }
@@ -234,44 +245,6 @@ a:hover {
 
     100% {
         opacity: 0;
-    }
-}
-
-.footer {
-    margin-top: 32px;
-    padding: 16px var(--padding);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__links {
-        display: flex;
-        gap: 32px;
-
-        &-link {
-            color: $color;
-            text-decoration: none;
-            font-size: 1.2rem;
-            border-bottom: 2px dotted transparent;
-
-            &:hover {
-                border-bottom: 2px dotted $color;
-            }
-        }
-    }
-
-    @media screen and (max-width: 1100px) {
-        display: block;
-
-        &__links {
-            display: block;
-
-            &-link {
-                display: block;
-                margin: 16px 0;
-                width: fit-content;
-            }
-        }
     }
 }
 
@@ -445,6 +418,12 @@ a:hover {
 
     &:hover {
         border-bottom: 2px dotted $color;
+    }
+
+    &[aria-disabled="true"] {
+        pointer-events: none;
+        user-select: none;
+        opacity: 0.5;
     }
 
     &--colored {
