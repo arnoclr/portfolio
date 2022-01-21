@@ -36,3 +36,16 @@ const images = document.querySelectorAll('.js-lazy');
 images.forEach(img => {
   observer.observe(img);
 });
+
+// check if project is passed in url
+const urlParams = new URLSearchParams(window.location.search);
+const project = urlParams.get('open');
+
+if (project) {
+  const projectImg = document.querySelector(`[data-to="p:${project}"]`).querySelector('img');
+  if (projectImg) {
+    projectImg.click();
+    // clean url
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+}
