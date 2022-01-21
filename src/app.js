@@ -49,3 +49,11 @@ if (project) {
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 }
+
+// check if is the first of april
+const date = new Date();
+const isFirstApril = date.getMonth() === 3 && date.getDate() === 1;
+
+if (isFirstApril) {
+  document.body.classList.add('js-april');
+}

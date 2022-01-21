@@ -1,0 +1,17 @@
+.js-april {
+    @font-face {
+        font-family: Comic Helvetic;
+        src: url('/static/fonts/ComicHelvetic_Light.otf');
+        font-weight: 400;
+    }
+    
+    @font-face {
+        font-family: Comic Helvetic;
+        src: url('/static/fonts/ComicHelvetic_Medium.otf');
+        font-weight: 600;
+    }
+    
+    h1, h2, h3, h4, h5, h6, p, a, .btn {
+        font-family: Comic Helvetic !important;
+    }
+}
