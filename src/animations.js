@@ -95,11 +95,11 @@ backBtn.addEventListener('click', e => {
 })
 
 // scroll down button
-const scrollDown = document.querySelector('.js-scroll-down');
+// const scrollDown = document.querySelector('.js-scroll-down');
 
-scrollDown.addEventListener('click', () => {
-  projects.scrollIntoView({behavior: 'smooth'});
-});
+// scrollDown.addEventListener('click', () => {
+//   projects.scrollIntoView({behavior: 'smooth'});
+// });
 
 function endPlaceholder(placeholder, transition) {
   // disable timing animation when place image at the first position and then reenable it

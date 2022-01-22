@@ -1,0 +1,22 @@
+<svg width="530" height="425" viewBox="0 0 530 425" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M424 425H530V318L424 425Z" fill="#013B01" fill-opacity="0.6"/>
+<path d="M318 425H424V318L318 425Z" fill="#013B01" fill-opacity="0.25"/>
+<path d="M212 425H318V318L212 425Z" fill="#013B01" fill-opacity="0.2"/>
+<path d="M106 425H212V318L106 425Z" fill="#013B01" fill-opacity="0.1"/>
+<path d="M0 425H106V318L0 425Z" fill="#013B01" fill-opacity="0.1"/>
+<path d="M424 319H530V212L424 319Z" fill="#013B01" fill-opacity="0.2"/>
+<path d="M318 319H424V212L318 319Z" fill="#013B01" fill-opacity="0.7"/>
+<path d="M212 319H318V212L212 319Z" fill="#013B01" fill-opacity="0.15"/>
+<path d="M106 319H212V212L106 319Z" fill="#013B01" fill-opacity="0.15"/>
+<path d="M0 319H106V212L0 319Z" fill="#013B01" fill-opacity="0.1"/>
+<path d="M424 212H530V105L424 212Z" fill="#013B01" fill-opacity="0.25"/>
+<path d="M318 212H424V105L318 212Z" fill="#013B01" fill-opacity="0.25"/>
+<path d="M212 212H318V105L212 212Z" fill="#013B01" fill-opacity="0.15"/>
+<path d="M106 212H212V105L106 212Z" fill="#013B01" fill-opacity="0.1"/>
+<path d="M0 212H106V105L0 212Z" fill="#013B01" fill-opacity="0.05"/>
+<path d="M424 106H530V-1L424 106Z" fill="#013B01" fill-opacity="0.2"/>
+<path d="M318 106H424V-1L318 106Z" fill="#013B01" fill-opacity="0.2"/>
+<path d="M212 106H318V-1L212 106Z" fill="#013B01" fill-opacity="0.2"/>
+<path d="M106 106H212V-1L106 106Z" fill="#013B01" fill-opacity="0.1"/>
+<path d="M0 106H106V-1L0 106Z" fill="#013B01" fill-opacity="0.02"/>
+</svg>
