@@ -574,8 +574,38 @@ a:hover {
         }
     }
 
-    &--open-in-new {
+    &[target="_blank"] {
         cursor: alias;
+    }
+}
+
+.empty {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: $background;
+    text-align: center;
+    user-select: none;
+
+    &__icon {
+        height: 40% !important;
+        width: auto !important;
+        color: #AAC0B2;
+    }
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: -1px;
+    }
+
+    &__text {
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 400;
     }
 }
 
