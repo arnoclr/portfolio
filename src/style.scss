@@ -173,10 +173,19 @@ a:hover {
 
     &__title {
         margin: 32px var(--padding);
+        margin-bottom: 8px;
         font-weight: 400;
         font-size: 4rem;
         letter-spacing: -2px;
         color: $background
+    }
+
+    &__description {
+        margin: 0 var(--padding);
+        margin-bottom: 32px;
+        font-size: 20px;
+        line-height: 22px;
+        color: $background;
     }
 }
 
@@ -433,6 +442,15 @@ a:hover {
         font-size: 4rem;
         letter-spacing: -2px;
         color: #000;
+        margin-bottom: 8px;
+    }
+
+    &__description {
+        margin: 0;
+        margin-bottom: 32px;
+        font-size: 20px;
+        line-height: 22px;
+        color: #323232;
     }
 
     &__list {
