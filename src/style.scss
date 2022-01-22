@@ -425,6 +425,76 @@ a:hover {
     }
 }
 
+.tools {
+    margin: 32px var(--padding);
+
+    &__title {
+        font-weight: 400;
+        font-size: 4rem;
+        letter-spacing: -2px;
+        color: #000;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+
+        @media screen and (max-width: 1000px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media screen and (max-width: 600px) {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.tool {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    cursor: alias;
+    text-decoration: none;
+    color: inherit;
+    border: none;
+
+    &:hover {
+        outline: 2px dotted $color;
+        outline-offset: 12px;
+    }
+
+    &__img {
+        width: 100%;
+        height: auto;
+    }
+
+    &__text {
+        &-title {
+            font-weight: 400;
+            font-size: 2rem;
+            letter-spacing: -1px;
+            color: $color;
+            margin: 12px 0;
+        }
+
+        &-description {
+            font-size: 18px;
+            line-height: 20px;
+            font-weight: 400;
+        }
+    }
+}
+
+.legal-notice {
+    margin: 32px var(--padding);
+    padding-top: 64px;
+    color: #545454;
+}
+
 .btn {
     padding: 12px 24px;
     width: fit-content;
