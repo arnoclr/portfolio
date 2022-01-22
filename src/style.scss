@@ -224,6 +224,11 @@ a:hover {
     &__item {
         display: flex;
 
+        &:focus-visible {
+            outline: 2px solid #fff;
+            opacity: 0.5;
+        }
+
         &:first-child {
             padding-left: var(--padding);
         }
@@ -243,11 +248,11 @@ a:hover {
         }
 
         &-title {
+            margin-left: 8px;
             font-size: 1.6rem;
             font-weight: 400;
             writing-mode: vertical-lr;
             text-align: end;
-            margin-left: 0;
             color: $background;
         }
 

@@ -11,7 +11,7 @@ projectsBoxes.forEach(box => {
 
   projectsImages.push(img);
 
-  img.addEventListener('click', e => {
+  box.addEventListener('click', e => {
     e.preventDefault();
     openedImg = img;
     img.style.visibility = 'hidden';
@@ -68,6 +68,16 @@ nextBtns.forEach(btn => {
 
 backBtn.addEventListener('click', e => {
   e.preventDefault();
+  closeProject();
+})
+
+document.addEventListener('keydown', e =>{
+	if (e.key === "Escape") {
+		closeProject();
+	}
+});
+
+function closeProject() {
   sessionStorage.removeItem('js-opened-project');
   let placeholder = createPlaceholder(openedImg);
   let placeholderRef = {
@@ -92,7 +102,7 @@ backBtn.addEventListener('click', e => {
     openedImg.style.visibility = 'visible';
     document.querySelector('html').style.overflow = 'auto';
   }, 300);
-})
+}
 
 // scroll down button
 // const scrollDown = document.querySelector('.js-scroll-down');
