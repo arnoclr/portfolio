@@ -528,6 +528,7 @@ a:hover {
     &:hover {
         outline: 2px dotted $color;
         outline-offset: 12px;
+        border: none;
     }
 
     &__img {
