@@ -84,9 +84,8 @@ a:hover {
         height: 100%;
         z-index: -1;
         opacity: 1;
-        animation: pattern-enter .8s linear .2s forwards;
+        animation: pattern-hide .2s linear, pattern-enter .8s linear .2s;
         animation-timing-function: steps(5);
-        transform: translateX(100%);
 
         @media screen and (max-width: 1350px)  {
             opacity: 0.2;
@@ -98,7 +97,16 @@ a:hover {
     }
 }
 
- @keyframes pattern-enter {
+@keyframes pattern-hide {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes pattern-enter {
     0% {
         transform: translateX(100%);
         opacity: 0;
@@ -223,6 +231,8 @@ a:hover {
 
     &__item {
         display: flex;
+        text-decoration: none;
+        border: none;
 
         &:focus-visible {
             outline: 2px solid #fff;
