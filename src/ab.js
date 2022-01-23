@@ -50,9 +50,6 @@ Object.keys(EXPERIMENTS).forEach(experimentName => {
     }
 });
 
-// define analytics properties
-setUserProperties(analytics, experimentVariants);
-
 document.addEventListener("DOMContentLoaded", function() {
     // apply tranformations for each experiment
     Object.keys(experimentVariants).forEach(experimentName => {
@@ -72,8 +69,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const eventTargets = document.querySelectorAll(event.targets);
             eventTargets.forEach(target => {
                 target.addEventListener(event.trigger, function(e) {
-                    logEvent(analytics, event.name);
-                    console.log(event.name);
+                    logEvent(analytics, event.name, {
+                        "variant": experimentVariants[experimentName]
+                    });
                 });
             });
         }
