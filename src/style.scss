@@ -193,6 +193,9 @@ a:hover {
             color: $color;
             cursor: alias;
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
     }
 
@@ -629,4 +632,8 @@ a:hover {
     -moz-transition: none !important;
     -o-transition: none !important;
     transition: none !important;
+}
+
+.hidden {
+    display: none;
 }

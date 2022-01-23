@@ -1,4 +1,5 @@
-import './animations';
+import "./animations";
+import "./ab.js";
 
 const translatables = document.querySelectorAll('[fr]');
 
@@ -53,7 +54,8 @@ let project = sessionStorage.getItem('js-opened-project');
 
 // check if project is passed in url
 const urlParams = new URLSearchParams(window.location.search);
-project = project || "p:" + urlParams.get('open');
+if (urlParams.has('open'))
+  project = project || "p:" + urlParams.get('open');
 
 if (project) open(project);
 
