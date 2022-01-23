@@ -73,7 +73,7 @@ a:hover {
 
 .top {
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
 
     &__pattern {
         position: absolute;
@@ -83,7 +83,7 @@ a:hover {
         height: 100%;
         z-index: -1;
         opacity: 1;
-        animation: pattern-hide .2s linear, pattern-enter .8s linear .2s;
+        animation: pattern-hide .2s linear, pattern-enter 1.2s linear .2s;
         animation-timing-function: steps(5);
 
         @media screen and (max-width: 1350px)  {
@@ -107,7 +107,7 @@ a:hover {
 
 @keyframes pattern-enter {
     0% {
-        transform: translateX(100%);
+        transform: translate3D(100%, 125%, 0);
         opacity: 0;
     }
     20% {
@@ -120,10 +120,10 @@ a:hover {
         opacity: 0.6;
     }
     80% {
-        opacity: 0.1;
+        opacity: 0.8;
     }
     100% {
-        transform: translateX(0);
+        transform: translate3D(0, 0, 0);
         opacity: 1;
     }
 }
