@@ -263,6 +263,7 @@ a:hover {
             writing-mode: vertical-lr;
             text-align: end;
             color: $background;
+            user-select: none;
         }
 
         /* animations */
