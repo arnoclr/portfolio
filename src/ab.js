@@ -28,6 +28,26 @@ const EXPERIMENTS = {
     }
 }
 
+const randomizer = (values) => {
+    let i, pickedValue,
+            randomNr = Math.random(),
+            threshold = 0;
+
+    for (i = 0; i < values.length; i++) {
+        threshold += values[i].percentage;
+        if (threshold > randomNr) {
+                pickedValue = values[i];
+                break;
+        }
+    }
+
+    return pickedValue;
+}
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+
 // assign a variant for each experiment
 const experimentVariants = {};
 Object.keys(EXPERIMENTS).forEach(experimentName => {
@@ -42,9 +62,8 @@ Object.keys(EXPERIMENTS).forEach(experimentName => {
             localStorage.removeItem('ab__' + experimentName);
         }
     } else {
-        const variantName = Object.keys(experiment).find(variantName => {
-            return Math.random() < experiment[variantName].percentage
-        });
+        const variant = randomizer(Object.values(experiment));
+        const variantName = getKeyByValue(experiment, variant);
         experimentVariants[experimentName] = variantName;
         localStorage.setItem('ab__' + experimentName, variantName);
     }
