@@ -24,9 +24,17 @@ document.querySelector('.ga-contact').addEventListener('click', () => {
   });
 });
 
+document.querySelectorAll('.ga-bio').forEach(tool => {
+  tool.addEventListener('click', () => {
+    logEvent(analytics, "open_bio_link", {
+      "name": tool.dataset.gaName
+    });
+  });
+});
+
 document.querySelectorAll('.ga-tool').forEach(tool => {
   tool.addEventListener('click', () => {
-    logEvent(analytics, "tool", {
+    logEvent(analytics, "open_tool", {
       "name": tool.dataset.gaName
     });
   });
