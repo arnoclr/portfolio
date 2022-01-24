@@ -1,9 +1,17 @@
+import { logEvent, setUserProperties } from "firebase/analytics";
+import { analytics } from "./firebase";
+
 const projectsBoxes = document.querySelectorAll('.js-project');
 const projects = document.querySelector('.js-projects');
 const slider = document.querySelector('.js-slider');
 const pages = document.querySelector('.js-pages');
+const projectsContent = document.querySelectorAll('.projects-details__page-content');
+
+let seconds = 0;
 
 let openedImg = null;
+let openedProjectName = null;
+
 const projectsImages = [];
 
 projectsBoxes.forEach(box => {
@@ -14,11 +22,17 @@ projectsBoxes.forEach(box => {
   box.addEventListener('click', e => {
     e.preventDefault();
     openedImg = img;
-    img.classList.add('invisible');
+    img.style.visibility = 'hidden';
     let placeholder = createPlaceholder(img);
 
     // store project name in session storage
-    sessionStorage.setItem('js-opened-project', box.dataset.to);
+    openedProjectName = box.dataset.to;
+    sessionStorage.setItem('js-opened-project', openedProjectName);
+    logProjectViewEvent(openedProjectName);
+
+    // start timer and log open event
+    seconds = 0;
+    var cancelTimer = setInterval(incrementSeconds, 1000);
     
     // animation
     pages.classList.add('start');
@@ -40,7 +54,7 @@ projectsBoxes.forEach(box => {
 
     // unhide image
     setTimeout(() => {
-      img.classList.remove('invisible');
+      img.style.visibility = 'visible';
     }, 700);
   });
 })
@@ -51,6 +65,16 @@ pages.addEventListener('scroll', () => {
   let openedProject = Math.round(pages.scrollLeft / window.innerWidth);
 
   openedImg = projectsImages[openedProject];
+
+  // retrive name of new project
+  let viewboxProjectName = projectsBoxes[openedProject].dataset.to;
+
+  if (viewboxProjectName != openedProjectName) {
+    logProjectViewEvent(openedProjectName, seconds);
+    openedProjectName = viewboxProjectName;
+    seconds = 0;
+    logProjectViewEvent(openedProjectName);
+  }
 })
 
 const nextBtns = document.querySelectorAll('.js-next-project');
@@ -78,6 +102,11 @@ document.addEventListener('keydown', e =>{
 });
 
 function closeProject() {
+
+  // analytics
+  logProjectViewEvent(openedProjectName, seconds);
+
+  // ui
   sessionStorage.removeItem('js-opened-project');
   let placeholder = createPlaceholder(openedImg);
   let placeholderRef = {
@@ -104,12 +133,15 @@ function closeProject() {
   }, 300);
 }
 
-// scroll down button
-// const scrollDown = document.querySelector('.js-scroll-down');
-
-// scrollDown.addEventListener('click', () => {
-//   projects.scrollIntoView({behavior: 'smooth'});
-// });
+// log event and read time when user finished read project details
+projectsContent.forEach(content => {
+  content.addEventListener('scroll', e => {
+    if (content.offsetHeight + content.scrollTop >= content.scrollHeight) {
+      logProjectViewEvent(openedProjectName, seconds);
+      seconds = 0;
+    }
+  });
+})
 
 function endPlaceholder(placeholder, transition) {
   // disable timing animation when place image at the first position and then reenable it
@@ -145,6 +177,27 @@ function createPlaceholder(img) {
   img.parentNode.insertBefore(placeholder, img);
 
   return placeholder;
+}
+
+function logProjectViewEvent(projectName, seconds = 0) {
+  projectName = projectName.substring(2);
+
+  if (seconds > 7) {
+    logEvent(analytics, 'project_view', {
+      project_name: projectName,
+      seconds: seconds
+    });
+    console.log(projectName, seconds)
+  } else if (seconds == 0) {
+    logEvent(analytics, 'project_open', {
+      project_name: projectName
+    })
+    console.log(projectName, 0)
+  }
+}
+
+function incrementSeconds() {
+  seconds++;
 }
 
 function getOffset(el) {

@@ -1,6 +1,9 @@
 import "./animations";
-import "./ab.js";
 
+import { logEvent, setUserProperties } from "firebase/analytics";
+import { analytics } from "./firebase";
+
+// translations
 const translatables = document.querySelectorAll('[fr]');
 
 if (navigator.language.includes('fr')) {
@@ -10,6 +13,24 @@ if (navigator.language.includes('fr')) {
     t.removeAttribute('fr');
   });
 }
+
+// split testing user property
+setUserProperties(analytics, { branch: process.env.BRANCH });
+
+// events
+document.querySelector('.ga-contact').addEventListener('click', () => {
+  logEvent(analytics, "contact", {
+    "placement": "header"
+  });
+});
+
+document.querySelectorAll('.ga-tool').forEach(tool => {
+  tool.addEventListener('click', () => {
+    logEvent(analytics, "tool", {
+      "name": tool.dataset.gaName
+    });
+  });
+});
 
 // lazy load images
 var observer = new IntersectionObserver(
