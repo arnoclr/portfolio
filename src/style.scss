@@ -133,6 +133,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     gap: 48px;
+    animation: pattern-hide .2s, header-fadein .3s cubic-bezier(.2,.96,.21,.96) .2s forwards;
 
     &__title  {
         font-size: 5rem;
@@ -201,6 +202,17 @@ a:hover {
 
     @media screen and (max-width: 768px) {
         margin: 64px 16px;
+    }
+}
+
+@keyframes header-fadein {
+    0% {
+        transform: translate3d(-2%, 0, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
     }
 }
 
