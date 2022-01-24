@@ -14,7 +14,7 @@ projectsBoxes.forEach(box => {
   box.addEventListener('click', e => {
     e.preventDefault();
     openedImg = img;
-    img.style.visibility = 'hidden';
+    img.classList.add('invisible');
     let placeholder = createPlaceholder(img);
 
     // store project name in session storage
@@ -40,7 +40,7 @@ projectsBoxes.forEach(box => {
 
     // unhide image
     setTimeout(() => {
-      img.style.visibility = 'visible';
+      img.classList.remove('invisible');
     }, 700);
   });
 })
