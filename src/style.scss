@@ -71,6 +71,54 @@ a:hover {
     -webkit-font-smoothing: antialiased;
 }
 
+.cookie-banner {
+    padding: 8px var(--padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color;
+
+    &__text {
+        color: $background;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: -0.3px;
+
+        &::selection {
+            background-color: #000;
+            color: #fff;
+        }
+
+        &-readmore {
+            color: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &-decline {
+            margin: 0 18px;
+            color: #ddd;
+            border-bottom: 1px dotted transparent;
+            cursor: default;
+
+            &:hover {
+                border-bottom: 1px dotted $background;
+            }
+        }
+    }
+}
+
 .top {
     position: relative;
     overflow: hidden;
@@ -607,6 +655,11 @@ a:hover {
         &:hover {
             border-bottom: 2px dotted $background;
         }
+    }
+
+    &--small {
+        padding: 8px 16px;
+        font-size: 14px;
     }
 
     &[target="_blank"] {

@@ -3,6 +3,32 @@ import "./animations";
 import { logEvent, setUserProperties } from "firebase/analytics";
 import { analytics } from "./firebase";
 
+// disabled analytics by default if consent is not given
+const consent = localStorage.getItem("__CONSENT__");
+
+function hideCookieBanner() {
+  document.querySelector('.cookie-banner').style.display = 'none';
+}
+
+if (consent != "allowed") {
+  window['ga-disable-GA_MEASUREMENT_ID'] = true;
+  console.log('Analytics disabled');
+}
+
+if (consent == "declined" || consent == "allowed") hideCookieBanner();
+
+document.querySelector('.js-cookie-allow').addEventListener('click', () => {
+  localStorage.setItem("__CONSENT__", "allowed");
+  window['ga-disable-GA_MEASUREMENT_ID'] = false;
+  console.log('Analytics enabled');
+  hideCookieBanner();
+});
+
+document.querySelector('.js-cookie-decline').addEventListener('click', () => {
+  localStorage.setItem("__CONSENT__", "declined");
+  hideCookieBanner();
+});
+
 // translations
 const translatables = document.querySelectorAll('[fr]');
 
