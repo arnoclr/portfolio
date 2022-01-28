@@ -55,6 +55,7 @@ projectsBoxes.forEach(box => {
     // unhide image
     setTimeout(() => {
       img.style.visibility = 'visible';
+      page.querySelector('.projects-details__page-content').style.transform = "none";
     }, 700);
   });
 })
@@ -75,6 +76,18 @@ pages.addEventListener('scroll', () => {
     seconds = 0;
     logProjectViewEvent(openedProjectName);
   }
+})
+
+projectsContent.forEach(page => {
+  const caroussel = page.querySelector('.projectcaroussel');
+
+  page.addEventListener('scroll', e => {
+    if (page.scrollTop > 0) {
+      caroussel.classList.add('scrolled');
+    } else {
+      caroussel.classList.remove('scrolled');
+    }
+  })
 })
 
 const nextBtns = document.querySelectorAll('.js-next-project');
@@ -115,9 +128,13 @@ function closeProject() {
     top: placeholder.style.top,
     left: placeholder.style.left
   };
+
   endPlaceholder(placeholder, false);
   pages.classList.remove('end');
   openedImg.style.visibility = 'hidden';
+  
+  const page = document.getElementById(openedProjectName)
+  page.querySelector('.projects-details__page-content').style.transform = "";
 
   placeholder.style.top = placeholderRef.top;
   placeholder.style.left = placeholderRef.left;

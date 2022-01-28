@@ -444,8 +444,7 @@ a:hover {
         }
 
         &-content {
-            padding: 32px;
-            width: calc(100vw - $image-width - 32px);
+            width: 100vw;
             transition: opacity .4s ease, transform .2s cubic-bezier(.19,1.01,.47,.97);
             transform: scaleY(2.5);
             transform-origin: top;
@@ -456,12 +455,11 @@ a:hover {
             &-actions {
                 display: flex;
                 gap: 8px;
-                padding: 32px 0;
+                padding: 32px;
             }
 
             h1, h2, h3, p {
                 font-weight: 400;
-                color: $color;
             }
 
             img {
@@ -476,18 +474,8 @@ a:hover {
             overflow-y: scroll;
 
             &-content {
-                padding: 0;
                 width: 100vw;
                 transform-origin: top;
-
-                h2, h3, p {
-                    margin: 32px 16px;
-                }
-
-                img {
-                    padding-left: 16px;
-                    max-width: calc(100% - 16px);
-                }
 
                 &-actions {
                     margin: 0;
@@ -540,6 +528,100 @@ a:hover {
                 opacity: 1;
             }
         }
+    }
+}
+
+.textcontent {
+    padding: 32px;
+
+    @media screen and (max-width: 768px) {
+        padding: 16px;
+    }
+}
+
+.keynumbers {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &__row {
+        padding: 22px 0;
+        border-top: 1px solid $color;
+        font-size: 56px;
+        line-height: 46px;
+        letter-spacing: -1px;
+        color: $color;
+
+        &:first-child {
+            border-top: none;
+        }
+
+        &-number {
+            font-size: 72px;
+            color: #000;
+            text-decoration: none;
+        }
+    }
+}
+
+.projectcaroussel {
+    height: 350px;
+    position: sticky;
+    top: 0;
+    z-index: 11;
+
+    &__content {
+        height: 350px;
+        display: flex;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        transform: scale3d(1,1,1);
+        transform-origin: top left;
+        transition: transform .3s cubic-bezier(.19,1.01,.47,.97);
+
+        &:not(:hover)::-webkit-scrollbar {
+            display: none;
+        }
+
+        &-img {
+            height: 350px;
+            width: auto;
+        }
+    }
+
+    &.scrolled &__content {
+        width: 250%;
+        transform: scale3d(.4, .4, 1);
+    }
+}
+
+.features {
+    margin-top: 64px;
+    display: flex;
+    gap: 32px;
+
+    &__item {
+        &-img {
+            width: 100%;
+            height: auto;
+        }
+
+        &-content {
+            &-title {
+                font-size: 24px;
+                font-weight: 400;
+                color: #000;
+            }
+
+            &-text {
+                color: $color;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        display: grid;
+        grid-template-columns: 1f;
     }
 }
 

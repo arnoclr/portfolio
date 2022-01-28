@@ -66,35 +66,6 @@ document.querySelectorAll('.ga-tool').forEach(tool => {
   });
 });
 
-// lazy load images
-var observer = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.intersectionRatio > 0.0) {
-        let img = entry.target;
-        if (!img.hasAttribute('loaded')) {
-          // find the noscript tag just below the image
-          const noscript = img.nextElementSibling;
-
-          // find image source
-          const HTML = noscript.innerText;
-          const src = HTML.match(/src="(.*?)"/)[1];
-
-          img.setAttribute('src', src);
-          img.setAttribute('loaded', true);
-        }
-      }
-    });
-  },
-  {}
-)
-
-const images = document.querySelectorAll('.js-lazy');
-
-images.forEach(img => {
-  observer.observe(img);
-});
-
 function open(project) {
   const projectImg = document.querySelector(`[data-to="${project}"]`).querySelector('img');
   if (projectImg) {
