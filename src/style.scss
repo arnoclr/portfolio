@@ -569,6 +569,7 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 11;
+    user-select: none;
 
     &__content {
         height: 350px;
@@ -580,7 +581,7 @@ a:hover {
         transition: transform .3s cubic-bezier(.19,1.01,.47,.97);
 
         &:not(:hover)::-webkit-scrollbar {
-            display: none;
+            opacity: 0;
         }
 
         &-img {
