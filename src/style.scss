@@ -451,6 +451,7 @@ a:hover {
             background-color: $background;
             opacity: 0;
             overflow-y: scroll;
+            overflow-x: hidden;
 
             &-actions {
                 display: flex;
@@ -598,7 +599,8 @@ a:hover {
 
 .features {
     margin-top: 64px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
 
     &__item {
