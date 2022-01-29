@@ -418,7 +418,7 @@ a:hover {
         background-color: transparent;
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(2px);
-        color: #fff;
+        color: $color;
         cursor: zoom-out;
         z-index: 99;
     }
@@ -435,7 +435,8 @@ a:hover {
 
         &-thumb {
             height: 100%;
-            width: $image-width;
+            // width: $image-width;
+            width: 0px;
             display: block;
             object-fit: cover;
             object-position: bottom;
@@ -485,7 +486,7 @@ a:hover {
             }
 
             &-thumb {
-                height: 300px;
+                height: 0px;
                 width: 100%;
             }
         }

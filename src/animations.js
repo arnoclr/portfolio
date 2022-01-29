@@ -82,7 +82,7 @@ projectsContent.forEach(page => {
   const caroussel = page.querySelector('.projectcaroussel');
 
   page.addEventListener('scroll', e => {
-    if (page.scrollTop > 0) {
+    if (page.scrollTop > 80) {
       caroussel.classList.add('scrolled');
     } else {
       caroussel.classList.remove('scrolled');
@@ -166,13 +166,8 @@ function endPlaceholder(placeholder, transition) {
 
   placeholder.style.top ='0px';
   placeholder.style.left ='0px';
-
-  if (window.innerWidth > 768) {
-    placeholder.style.height = window.innerHeight + 'px';
-  } else {
-    placeholder.style.height = '300px';
-    placeholder.style.width = window.innerWidth + 'px';
-  }
+  placeholder.style.height = window.innerHeight + 'px';
+  placeholder.style.width = window.innerWidth + 'px';
 
   placeholder.offsetHeight;
   placeholder.classList.remove('js-notransition');
