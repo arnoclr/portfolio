@@ -565,11 +565,13 @@ a:hover {
     &__content {
         height: 350px;
         display: flex;
+        opacity: 1;
         overflow-y: hidden;
         overflow-x: scroll;
         transform: scale3d(1,1,1);
         transform-origin: top left;
         transition: transform .3s cubic-bezier(.19,1.01,.47,.97);
+        background-color: $background;
 
         &:not(:hover)::-webkit-scrollbar {
             opacity: 0;
@@ -578,12 +580,18 @@ a:hover {
         &-img {
             height: 350px;
             width: auto;
+            opacity: 1;
+            transition: opacity .3s ease;
         }
     }
 
     &.scrolled &__content {
         width: 250%;
         transform: scale3d(.4, .4, 1);
+        
+        &-img {
+            opacity: 0.3;
+        }
     }
 
     @media screen and (max-width: 768px) {
