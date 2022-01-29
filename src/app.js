@@ -75,6 +75,19 @@ function open(project) {
   }
 }
 
+// play videos only on hover
+const videos = document.querySelectorAll('video');
+
+videos.forEach(video => {
+  video.addEventListener("mouseover", function() {
+    this.play();
+  });
+  
+  video.addEventListener("mouseleave", function() {
+    this.pause();
+  });
+});
+
 // ckech if project is present in session storage
 let project = sessionStorage.getItem('js-opened-project');
 
