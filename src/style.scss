@@ -446,7 +446,7 @@ a:hover {
 
         &-content {
             width: 100vw;
-            transition: opacity .4s ease, transform .2s cubic-bezier(.19,1.01,.47,.97);
+            transition: opacity .5s ease, transform .5s cubic-bezier(.19,1.01,.47,.97);
             transform: scale3D(.3, .5, 1);
             transform-origin: center;
             background-color: $background;
@@ -477,6 +477,7 @@ a:hover {
 
             &-content {
                 width: 100vw;
+                transform: scale3D(.8, .4, 1);
 
                 &-actions {
                     margin: 0;
@@ -497,19 +498,6 @@ a:hover {
         .projects-details {
             &__page-content {
                 opacity: 0;
-            }
-
-            &__page-thumb {
-                opacity: 0;
-            }
-        }
-    }
-
-    &.middle {
-        .projects-details {
-            &__page-content {
-                opacity: 0;
-                transform: scale3D(.3, .5, 1);
             }
 
             &__page-thumb {

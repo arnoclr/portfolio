@@ -41,7 +41,7 @@ projectsBoxes.forEach(box => {
 
     const page = document.getElementById(box.dataset.to)
     
-    pages.classList.add('middle');
+    pages.classList.add('end');
     const offset = getOffset(img);
 
     const content = page.querySelector('.projects-details__page-content');
@@ -52,11 +52,6 @@ projectsBoxes.forEach(box => {
     setTimeout(() => {
       placeholder.style.opacity = 0;
     }, 50);
-
-    // show project details
-    setTimeout(() => {
-      pages.classList.add('end');
-    }, 100);
 
     // remove placeholder after animation
     setTimeout(() => {
@@ -162,7 +157,6 @@ function closeProject() {
 
   setTimeout(() => {
     pages.classList.remove('start');
-    pages.classList.remove('middle');
     placeholder.remove();
     openedImg.style.visibility = 'visible';
     document.querySelector('html').style.overflow = 'auto';
