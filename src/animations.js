@@ -40,6 +40,7 @@ projectsBoxes.forEach(box => {
     endPlaceholder(placeholder, true);
 
     const page = document.getElementById(box.dataset.to)
+    page.scrollIntoView({behavior: 'instant'});
     
     pages.classList.add('end');
     const offset = getOffset(img);
@@ -57,7 +58,6 @@ projectsBoxes.forEach(box => {
     setTimeout(() => {
       placeholder.remove();
       document.querySelector('html').style.overflow = 'hidden';
-      page.scrollIntoView({behavior: 'instant'});
     }, 301);
 
     // unhide image
