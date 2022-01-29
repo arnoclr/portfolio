@@ -21,13 +21,15 @@ $image-width: 350px;
 
 @font-face {
     font-family: Nimbus Sans;
-    src: url("/static/fonts/NimbusSanL-Bol.otf");
+    src: local('Arial'), url("/static/fonts/NimbusSanL-Bol.otf");
+    font-display: swap;
     font-weight: 600;
 }
 
 @font-face {
     font-family: Nimbus Sans;
-    src: url("/static/fonts/NimbusSanL-Reg.otf");
+    src: local('Arial'), url("/static/fonts/NimbusSanL-Reg.otf");
+    font-display: swap;
     font-weight: 400;
 }
 
