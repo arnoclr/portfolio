@@ -44,9 +44,13 @@ projectsBoxes.forEach(box => {
     pages.classList.add('middle');
     const offset = getOffset(img);
 
-    // remove placeholder after animation
+    // show project details
     setTimeout(() => {
       pages.classList.add('end');
+    }, 100);
+
+    // remove placeholder after animation
+    setTimeout(() => {
       placeholder.remove();
       document.querySelector('html').style.overflow = 'hidden';
       page.scrollIntoView({behavior: 'instant'});
