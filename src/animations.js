@@ -44,6 +44,15 @@ projectsBoxes.forEach(box => {
     pages.classList.add('middle');
     const offset = getOffset(img);
 
+    const content = page.querySelector('.projects-details__page-content');
+    // 350x450
+    content.style.transformOrigin = `${offset.left + 350/2}px ${offset.top + 450/2}px`;
+
+    // fade out placeholder
+    setTimeout(() => {
+      placeholder.style.opacity = 0;
+    }, 50);
+
     // show project details
     setTimeout(() => {
       pages.classList.add('end');
@@ -59,7 +68,7 @@ projectsBoxes.forEach(box => {
     // unhide image
     setTimeout(() => {
       img.style.visibility = 'visible';
-      page.querySelector('.projects-details__page-content').style.transform = "none";
+      content.style.transform = "none";
     }, 700);
   });
 })
@@ -134,6 +143,7 @@ function closeProject() {
   };
 
   endPlaceholder(placeholder, false);
+  placeholder.style.opacity = 0;
   pages.classList.remove('end');
   openedImg.style.visibility = 'hidden';
   
@@ -144,6 +154,11 @@ function closeProject() {
   placeholder.style.left = placeholderRef.left;
   placeholder.style.height = placeholderRef.height;
   placeholder.style.width = placeholderRef.width;
+
+  // fade in placeholder
+  setTimeout(() => {
+    placeholder.style.opacity = 1;
+  }, 50);
 
   setTimeout(() => {
     pages.classList.remove('start');
