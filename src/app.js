@@ -11,7 +11,7 @@ function hideCookieBanner() {
 }
 
 if (consent != "allowed") {
-  window['ga-disable-GA_MEASUREMENT_ID'] = true;
+  window['ga-disable-G-G6TCXRC95X'] = true;
   console.log('Analytics disabled');
 }
 
@@ -19,7 +19,7 @@ if (consent == "declined" || consent == "allowed") hideCookieBanner();
 
 document.querySelector('.js-cookie-allow').addEventListener('click', () => {
   localStorage.setItem("__CONSENT__", "allowed");
-  window['ga-disable-GA_MEASUREMENT_ID'] = false;
+  window['ga-disable-G-G6TCXRC95X'] = false;
   console.log('Analytics enabled');
   hideCookieBanner();
 });
