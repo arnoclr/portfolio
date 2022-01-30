@@ -603,8 +603,16 @@ a:hover {
     }
 }
 
-.features {
+.features-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 32px;
+    color: $color;
     margin-top: 64px;
+}
+
+.features {
+    margin-top: 22px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
