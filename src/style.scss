@@ -435,24 +435,10 @@ a:hover {
         overflow-y: hidden;
         flex-shrink: 0;
 
-        &-thumb {
-            height: 100%;
-            // width: $image-width;
-            width: 0px;
-            display: block;
-            object-fit: cover;
-            object-position: bottom;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
         &-content {
             width: 100vw;
-            transition: opacity .5s ease, transform .5s cubic-bezier(.19,1.01,.47,.97);
-            transform: scale3D(.3, .5, 1);
-            transform-origin: center;
+            height: 100%;
             background-color: $background;
-            opacity: 0;
             overflow-y: scroll;
             overflow-x: hidden;
 
@@ -485,38 +471,6 @@ a:hover {
                     margin: 0;
                     padding: 32px 16px;
                 }
-            }
-
-            &-thumb {
-                height: 0px;
-                width: 100%;
-            }
-        }
-    }
-
-    &.start {
-        display: flex;
-
-        .projects-details {
-            &__page-content {
-                opacity: 0;
-            }
-
-            &__page-thumb {
-                opacity: 0;
-            }
-        }
-    }
-
-    &.end {
-        .projects-details {
-            &__page-content {
-                opacity: 1;
-                transform: scale3D(1, 1, 1);
-            }
-
-            &__page-thumb {
-                opacity: 0;
             }
         }
     }

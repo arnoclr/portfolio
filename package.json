@@ -20,6 +20,7 @@
     "url": "git+https://github.com/arnoclr/portfolio.git"
   },
   "dependencies": {
-    "firebase": "^9.6.4"
+    "firebase": "^9.6.4",
+    "illusory": "^2.0.3"
   }
 }

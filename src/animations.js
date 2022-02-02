@@ -1,5 +1,6 @@
 import { logEvent, setUserProperties } from "firebase/analytics";
 import { analytics } from "./firebase";
+import { illusory } from "illusory";
 
 const projectsBoxes = document.querySelectorAll('.js-project');
 const projects = document.querySelector('.js-projects');
@@ -22,8 +23,6 @@ projectsBoxes.forEach(box => {
   box.addEventListener('click', e => {
     e.preventDefault();
     openedImg = img;
-    img.style.visibility = 'hidden';
-    let placeholder = createPlaceholder(img);
 
     // store project name in session storage
     openedProjectName = box.dataset.to;
@@ -33,39 +32,21 @@ projectsBoxes.forEach(box => {
     // start timer and log open event
     seconds = 0;
     var cancelTimer = setInterval(incrementSeconds, 1000);
-    
+
     // animation
-    pages.classList.add('start');
-    placeholder.offsetHeight;
-    endPlaceholder(placeholder, true);
-
-    const page = document.getElementById(box.dataset.to)
+    const page = document.getElementById(box.dataset.to);
+    pages.style.display = 'flex';
     page.scrollIntoView({behavior: 'instant'});
-    
-    pages.classList.add('end');
-    const offset = getOffset(img);
+    document.body.style.overflow = 'hidden';
 
-    const content = page.querySelector('.projects-details__page-content');
-    // 350x450
-    content.style.transformOrigin = `${offset.left + 350/2}px ${offset.top + 450/2}px`;
+    illusory(openedImg, page, {
+      duration: '.3s',
+      easing: 'cubic-bezier(.45,-0.01,0,.9)',
+      compositeOnly: true,
+    });
 
-    // fade out placeholder
-    setTimeout(() => {
-      placeholder.style.opacity = 0;
-    }, 50);
-
-    // remove placeholder after animation
-    setTimeout(() => {
-      placeholder.remove();
-      document.querySelector('html').style.overflow = 'hidden';
-    }, 301);
-
-    // unhide image
-    setTimeout(() => {
-      img.style.visibility = 'visible';
-      content.style.transform = "none";
-    }, 700);
-  });
+    console.log(openedImg, page, openedProjectName);
+  })
 })
 
 let backBtn = document.querySelector('.js-close-pages');
@@ -116,51 +97,32 @@ backBtn.addEventListener('click', e => {
   closeProject();
 })
 
-document.addEventListener('keydown', e =>{
+document.addEventListener('keydown', e => {
 	if (e.key === "Escape") {
 		closeProject();
 	}
 });
 
-function closeProject() {
+async function closeProject() {
 
   // analytics
   logProjectViewEvent(openedProjectName, seconds);
 
-  // ui
   sessionStorage.removeItem('js-opened-project');
-  let placeholder = createPlaceholder(openedImg);
-  let placeholderRef = {
-    width: placeholder.style.width,
-    height: placeholder.style.height,
-    top: placeholder.style.top,
-    left: placeholder.style.left
-  };
-
-  endPlaceholder(placeholder, false);
-  placeholder.style.opacity = 0;
-  pages.classList.remove('end');
-  openedImg.style.visibility = 'hidden';
   
+  // animation
   const page = document.getElementById(openedProjectName)
-  page.querySelector('.projects-details__page-content').style.transform = "";
+  document.body.style.overflow = '';
 
-  placeholder.style.top = placeholderRef.top;
-  placeholder.style.left = placeholderRef.left;
-  placeholder.style.height = placeholderRef.height;
-  placeholder.style.width = placeholderRef.width;
+  let {finished, cancel} = illusory(page, openedImg, {
+    duration: '.25s',
+    easing: 'cubic-bezier(.45,-0.01,0,.9)',
+    compositeOnly: true,
+  });
 
-  // fade in placeholder
-  setTimeout(() => {
-    placeholder.style.opacity = 1;
-  }, 50);
-
-  setTimeout(() => {
-    pages.classList.remove('start');
-    placeholder.remove();
-    openedImg.style.visibility = 'visible';
-    document.querySelector('html').style.overflow = 'auto';
-  }, 300);
+  const canceled = await finished;
+  
+  pages.style.display = 'none';
 }
 
 // log event and read time when user finished read project details
@@ -172,37 +134,6 @@ projectsContent.forEach(content => {
     }
   });
 })
-
-function endPlaceholder(placeholder, transition) {
-  // disable timing animation when place image at the first position and then reenable it
-  !transition && placeholder.classList.add('js-notransition');
-
-  placeholder.style.top ='0px';
-  placeholder.style.left ='0px';
-  placeholder.style.height = window.innerHeight + 'px';
-  placeholder.style.width = window.innerWidth + 'px';
-
-  placeholder.offsetHeight;
-  placeholder.classList.remove('js-notransition');
-}
-
-function createPlaceholder(img) {
-  const placeholder = document.createElement('img');
-
-  placeholder.classList.add('js-placeholder')
-  placeholder.width = img.width;
-  placeholder.height = img.height;
-
-  const position = getOffset(img);
-  placeholder.style.top = position.top + 'px'
-  placeholder.style.left = position.left - slider.scrollLeft + 'px'
-
-  placeholder.src = img.src
-
-  img.parentNode.insertBefore(placeholder, img);
-
-  return placeholder;
-}
 
 function logProjectViewEvent(projectName, seconds = 0) {
   projectName = projectName.substring(2);
@@ -223,19 +154,4 @@ function logProjectViewEvent(projectName, seconds = 0) {
 
 function incrementSeconds() {
   seconds++;
-}
-
-function getOffset(el) {
-  let x = 0
-  let y = 0
-  while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
-      x += el.offsetLeft - el.scrollLeft
-      y += el.offsetTop - el.scrollTop
-      el = el.offsetParent
-  }
-  // remove scroll offset
-  x -= window.scrollX
-  y -= window.scrollY
-
-  return { top: y, left: x }
 }
