@@ -43,6 +43,7 @@ projectsBoxes.forEach(box => {
       duration: '.3s',
       easing: 'cubic-bezier(.45,-0.01,0,.9)',
       compositeOnly: true,
+      includeChildren: false
     });
   })
 })
@@ -116,6 +117,7 @@ async function closeProject() {
     duration: '.25s',
     easing: 'cubic-bezier(.45,-0.01,0,.9)',
     compositeOnly: true,
+    includeChildren: false
   });
 
   const canceled = await finished;
