@@ -44,8 +44,6 @@ projectsBoxes.forEach(box => {
       easing: 'cubic-bezier(.45,-0.01,0,.9)',
       compositeOnly: true,
     });
-
-    console.log(openedImg, page, openedProjectName);
   })
 })
 
