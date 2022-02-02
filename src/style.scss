@@ -242,7 +242,6 @@ a:hover {
 
         &-link {
             color: $color;
-            cursor: alias;
             font-size: 18px;
             display: flex;
             align-items: center;
@@ -636,7 +635,6 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
-    cursor: alias;
     text-decoration: none;
     color: inherit;
     border: none;
@@ -712,10 +710,6 @@ a:hover {
     &--small {
         padding: 8px 16px;
         font-size: 14px;
-    }
-
-    &[target="_blank"] {
-        cursor: alias;
     }
 }
 
