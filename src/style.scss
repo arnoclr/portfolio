@@ -403,7 +403,7 @@ a:hover {
     inset: 0;
     z-index: 9;
     white-space: nowrap;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
 
@@ -457,8 +457,12 @@ a:hover {
                 object-fit: cover;
             }
         }
+    }
 
-        @media screen and (max-width: 768px) {
+    @media screen and (max-width: 768px) {
+        overflow-x: scroll;
+        
+        &__page {
             display: block;
             overflow-y: scroll;
 
