@@ -7,7 +7,7 @@ import { analytics } from "./firebase";
 const consent = localStorage.getItem("__CONSENT__");
 
 function hideCookieBanner() {
-  document.querySelector('.cookie-banner').style.display = 'none';
+  document.querySelector('.ac-cookie-banner').style.display = 'none';
 }
 
 if (consent != "allowed") {

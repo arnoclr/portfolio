@@ -6,7 +6,7 @@ const projectsBoxes = document.querySelectorAll('.js-project');
 const projects = document.querySelector('.js-projects');
 const slider = document.querySelector('.js-slider');
 const pages = document.querySelector('.js-pages');
-const projectsContent = document.querySelectorAll('.projects-details__page-content');
+const projectsContent = document.querySelectorAll('.js-page-content');
 
 let seconds = 0;
 
@@ -67,7 +67,7 @@ pages.addEventListener('scroll', () => {
 })
 
 projectsContent.forEach(page => {
-  const caroussel = page.querySelector('.projectcaroussel');
+  const caroussel = page.querySelector('.js-projectcaroussel');
 
   page.addEventListener('scroll', e => {
     if (page.scrollTop > 80) {
