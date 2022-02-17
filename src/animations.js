@@ -1,5 +1,3 @@
-import { logEvent, setUserProperties } from "firebase/analytics";
-import { analytics } from "./firebase";
 import { illusory } from "illusory";
 
 const projectsBoxes = document.querySelectorAll('.js-project');
@@ -136,20 +134,7 @@ projectsContent.forEach(content => {
 })
 
 function logProjectViewEvent(projectName, seconds = 0) {
-  projectName = projectName.substring(2);
-
-  if (seconds > 7) {
-    logEvent(analytics, 'project_view', {
-      project_name: projectName,
-      seconds: seconds
-    });
-    console.log(projectName, seconds)
-  } else if (seconds == 0) {
-    logEvent(analytics, 'project_open', {
-      project_name: projectName
-    })
-    console.log(projectName, 0)
-  }
+  return null;
 }
 
 function incrementSeconds() {
