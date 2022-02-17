@@ -336,7 +336,7 @@ a:hover {
             }
 
             /* animations */
-            @for $i from 1 through 4 {
+            @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
                     animation: hide (($i)-1) * 0.1s, slide-in-from-left (6-($i)) * 0.1s cubic-bezier(.32,.21,0,.97) (($i)-1) * 0.1s;
                 }
