@@ -12,7 +12,7 @@
     "uglify-classes": "^1.2.2"
   },
   "scripts": {
-    "build": "parcel build index.html 404.html && uglify-classes --method random:3",
+    "build": "parcel build index.html 404.html && uglify-classes --method hash:5",
     "build-legacy": "parcel build index.html 404.html",
     "dev": "npx parcel"
   },
