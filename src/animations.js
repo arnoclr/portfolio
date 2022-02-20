@@ -18,7 +18,7 @@ projectsBoxes.forEach(box => {
 
   projectsImages.push(img);
 
-  box.addEventListener('click', e => {
+  box.addEventListener('click', async e => {
     e.preventDefault();
     openedImg = img;
 
@@ -35,14 +35,17 @@ projectsBoxes.forEach(box => {
     const page = document.getElementById(box.dataset.to);
     pages.style.display = 'flex';
     page.scrollIntoView({behavior: 'instant'});
-    document.body.style.overflow = 'hidden';
 
-    illusory(openedImg, page, {
+    let {finished, cancel} = illusory(openedImg, page, {
       duration: '.3s',
       easing: 'cubic-bezier(.45,-0.01,0,.9)',
       compositeOnly: true,
       includeChildren: false
     });
+
+    const canceled = await finished;
+
+    document.body.style.overflow = 'hidden';
   })
 })
 
