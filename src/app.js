@@ -41,7 +41,7 @@ const emailButton = document.querySelector('.js-mail');
 
 let referrer = "direct";
 if (document.referrer) {
-  url = document.referrer; 
+  let url = document.referrer; 
   referrer = url.match(/:\/\/(.[^/]+)/)[1];
 }
 
