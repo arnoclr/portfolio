@@ -56,7 +56,7 @@ if (localStorage.getItem('utm_source') != null) {
 }
 
 const utmData = {
-  s: urlParams.get('utm_source') || referrer,
+  s: urlParams.get('utm_source') || urlParams.get('u') || referrer,
   ts: timestamp
 }
 
