@@ -77,3 +77,6 @@ const isFirstApril = date.getMonth() === 3 && date.getDate() === 1;
 if (isFirstApril) {
   document.body.classList.add('js-april');
 }
+
+// clean url
+history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
