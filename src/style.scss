@@ -758,6 +758,7 @@ a:hover {
         box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
         z-index: 99;
         overflow-x: hidden;
+        display: none;
 
         &__title {
             margin-top: 0;
@@ -794,6 +795,7 @@ a:hover {
             inset: 0;
             background: rgba(0, 0, 0, 0.5);
             z-index: 98;
+            display: none;
         }
 
         @media screen and (max-width: 600px) {
@@ -801,6 +803,14 @@ a:hover {
             right: 0;
             left: 0;
             transform: none;
+        }
+
+        &--open {
+            display: block;
+
+            &+.ac-tel-modal-backdrop {
+                display: block;
+            }
         }
     }
 }

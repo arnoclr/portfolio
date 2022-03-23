@@ -2,6 +2,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "./firebase";
 
 const telForm = document.getElementById('js-tel-form');
+const telModal = document.getElementById('js-tel-modal');
 
 telForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -38,3 +39,16 @@ grabAndConvertPhoneNumber = () => {
     const convertedPhoneNumber = '+33' + phoneNumber.replace(/[^0-9]/g, '');
     return convertedPhoneNumber;
 }
+
+openModal = () => {
+    telModal.classList.add('ac-tel-modal--open');
+    document.body.style.overflow = 'hidden';
+}
+
+showPhoneNumber = () => {
+    // detect if user is logged in
+    //
+    openModal();
+}
+
+export { showPhoneNumber };

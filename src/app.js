@@ -1,5 +1,5 @@
 import "./animations";
-import "./tel";
+import { showPhoneNumber } from "./tel";
 
 // translations
 const translatables = document.querySelectorAll('[fr]');
@@ -79,5 +79,11 @@ if (isFirstApril) {
   document.body.classList.add('js-april');
 }
 
-// clean url
-history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
+window.addEventListener('DOMContentLoaded', () => {
+  if (/[\?|\&]tel/.test(window.location.href)) {
+    showPhoneNumber();
+  }
+
+  // clean url
+  // history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
+});
