@@ -747,6 +747,62 @@ a:hover {
             font-weight: 400;
         }
     }
+
+    &-tel-modal {
+        position: fixed;
+        padding: 48px 32px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $background-surface;
+        box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
+        z-index: 99;
+        overflow-x: hidden;
+
+        &__title {
+            margin-top: 0;
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        &__disclaimer {
+            color: #777;
+
+            a {
+                color: #000;
+                font-size: small;
+            }
+        }
+
+        &__inputbox {
+            margin-top: 32px;
+            display: flex;
+            gap: 12px;
+        }
+
+        &__input {
+            padding: 0 18px;
+            border: none;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.04);
+            font-size: 18px;
+        }
+
+        &-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 98;
+        }
+
+        @media screen and (max-width: 600px) {
+            bottom: 0;
+            right: 0;
+            left: 0;
+            transform: none;
+        }
+    }
 }
 
 .js-notransition {
@@ -754,4 +810,8 @@ a:hover {
     -moz-transition: none !important;
     -o-transition: none !important;
     transition: none !important;
+}
+
+.grecaptcha-badge { 
+    visibility: hidden;
 }

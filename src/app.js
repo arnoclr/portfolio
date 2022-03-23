@@ -1,4 +1,5 @@
 import "./animations";
+import "./tel";
 
 // translations
 const translatables = document.querySelectorAll('[fr]');

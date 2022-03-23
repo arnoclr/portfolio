@@ -444,6 +444,23 @@
         </ul>
     </section>
 
+    <aside class="js-tel-modal ac-tel-modal">
+        <h3 class="ac-tel-modal__title" fr="Avant de continuer ...">Before continuing ...</h3>
+        <p class="ac-tel-modal__text">Afin d'éviter le spam sur mon numéro de téléphone, veuillez renseigner votre numéro de téléphone ci-dessous. Il ne sera utilisé que pour vérifier votre demande et ne sera en aucun cas partagé. </p>
+
+        <small class="ac-tel-modal__disclaimer">Vous recevrez un code envoyé par SMS. Des frais d'utilisation peuvent s'appliquer. This site is protected by reCAPTCHA and the Google
+            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
+
+        <form class="ac-tel-modal__inputbox" id="js-tel-form">
+            <input type="tel" class="ac-tel-modal__input" id="js-tel-number" placeholder="Numéro de téléphone" required>
+            <button class="ac-tel-modal__button ac-btn ac-btn--colored" id="js-tel-send">Vérifier</button>
+        </form>
+
+        <div id="js-tel-recaptcha"></div>
+    </aside>
+    <aside class="js-tel-modal-backdrop ac-tel-modal-backdrop"></aside>
+
     <footer>
         <p class="ac-legal-notice">&copy; 2022 Arno Cellarier. <span fr="Icones par">Icons by</span> <a rel="noreferrer nofollow" href="https://icons8.com/">Icons8</a>. <a href="/imprint.html" fr="Informations légales">Imprint</a></p>
     </footer>
