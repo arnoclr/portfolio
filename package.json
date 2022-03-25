@@ -9,10 +9,10 @@
     "@parcel/transformer-sass": "^2.2.1",
     "parcel": "^2.0.1",
     "sharp": "^0.29.3",
-    "uglify-classes": "^1.2.2"
+    "uglify-classes": "^1.2.3"
   },
   "scripts": {
-    "build": "parcel build index.html 404.html && uglify-classes --method hash:5",
+    "build": "parcel build index.html 404.html && uglify-classes --method hash:5 --prefix ac-",
     "build-legacy": "parcel build index.html 404.html",
     "dev": "npx parcel"
   },
