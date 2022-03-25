@@ -2,6 +2,7 @@ $color: #013b01;
 $color-hover: #000000;
 $background: #ecf3f2;
 $background-surface: #ddebe7;
+$color-error: #db2f27;
 $image-width: 350px;
 
 :root {
@@ -712,6 +713,10 @@ a:hover {
             }
         }
 
+        &--onsurface {
+            background-color: rgba(0, 0, 0, 0.09);
+        }
+
         &--small {
             padding: 8px 16px;
             font-size: 14px;
@@ -747,6 +752,111 @@ a:hover {
             font-weight: 400;
         }
     }
+
+    &-tel-modal {
+        padding: 0;
+        max-width: 480px;
+        background-color: $background-surface;
+        border: none;
+        box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
+        overflow-x: hidden;
+
+        &::backdrop {
+            background-color: rgba(0,0,0,.7);
+        }
+
+        &__content {
+            padding: 48px 32px;
+        }
+
+        &__footer {
+            padding: 16px 32px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        &__title {
+            margin-top: 0;
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        &__disclaimer {
+            color: #777;
+
+            a {
+                color: #000;
+                font-size: small;
+            }
+        }
+
+        &__inputbox {
+            margin-top: 32px;
+            display: flex;
+            gap: 12px;
+        }
+
+        &__input {
+            padding: 0 18px;
+            border: none;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.04);
+            font-size: 18px;
+
+            &:focus {
+                outline: none;
+                border-bottom: 2px solid $color;
+            }
+        }
+
+        &__sidebox {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+
+            #js-tel-qr-output {
+                width: 192px;
+                height: 192px;
+            }
+        }
+
+        &__phonenumber {
+            font-size: 32px;
+            line-height: 32px;
+            font-weight: 400;
+            color: $color;
+        }
+
+        &__error {
+            display: block;
+            color: $color-error;
+            font-size: small;
+            margin-top: 8px;
+        }
+
+        @media screen and (max-width: 600px) {
+            margin: auto 0 0 0;
+            max-width: 100%;
+        }
+    }
+
+    &-stepper {
+        display: flex;
+        gap: 64px;
+        overflow-x: hidden;
+        scroll-snap-type: x mandatory;
+
+        &__pane {
+            min-width: 100%;
+            max-width: 100%;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+    }
 }
 
 .js-notransition {
@@ -754,4 +864,8 @@ a:hover {
     -moz-transition: none !important;
     -o-transition: none !important;
     transition: none !important;
+}
+
+.grecaptcha-badge { 
+    visibility: hidden;
 }

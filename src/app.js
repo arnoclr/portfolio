@@ -1,4 +1,5 @@
 import "./animations";
+import { showPhoneNumber } from "./tel";
 
 // translations
 const translatables = document.querySelectorAll('[fr]');
@@ -78,11 +79,16 @@ if (isFirstApril) {
   document.body.classList.add('js-april');
 }
 
-// clean url
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener('DOMContentLoaded', () => {
+  if (/[\?|\&]tel/.test(window.location.href)) {
+    showPhoneNumber();
+  }
 
+  // clean url
   setTimeout(() => {
-    history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
+    // replace utm source in url
+    const url = new URL(window.location.href);
+    url.searchParams.set('utm_source', 'copy_url');
+    window.history.replaceState(null, null, url.toString());
   }, 250);
-
 });
