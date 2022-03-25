@@ -3,21 +3,7 @@ import { auth } from "./firebase";
 
 const telForm = document.getElementById('js-tel-form');
 const telModal = document.getElementById('js-tel-modal');
-
-telForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    onSignInSubmit();
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-    window.recaptchaVerifier = new RecaptchaVerifier('js-tel-recaptcha', {
-        'size': 'invisible',
-        'callback': (response) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-        console.log('callback');
-        }
-    }, auth);
-})
+const telModalClose = document.getElementById('js-tel-modal-close');
 
 onSignInSubmit = () => {
     const phoneNumber = grabAndConvertPhoneNumber();
@@ -41,8 +27,20 @@ grabAndConvertPhoneNumber = () => {
 }
 
 openModal = () => {
-    telModal.classList.add('ac-tel-modal--open');
     document.body.style.overflow = 'hidden';
+    telModal.showModal();
+}
+
+closeModal = () => {
+    document.body.style.overflow = 'auto';
+    telModal.close();
+
+    // get all current params from url
+    const urlParams = new URLSearchParams(window.location.search);
+    // remove tel from url
+    urlParams.delete('tel');
+    // update url
+    window.history.replaceState({}, '', '?' + urlParams.toString());
 }
 
 showPhoneNumber = () => {
@@ -50,5 +48,22 @@ showPhoneNumber = () => {
     //
     openModal();
 }
+
+telForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    onSignInSubmit();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    window.recaptchaVerifier = new RecaptchaVerifier('js-tel-recaptcha', {
+        'size': 'invisible',
+        'callback': (response) => {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+        console.log('callback');
+        }
+    }, auth);
+})
+
+telModalClose.addEventListener('click', closeModal);
 
 export { showPhoneNumber };

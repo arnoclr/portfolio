@@ -86,6 +86,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // clean url
   setTimeout(() => {
-    history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
+    // replace utm source in url
+    const url = new URL(window.location.href);
+    url.searchParams.set('utm_source', 'copy_url');
+    window.history.replaceState(null, null, url.toString());
   }, 250);
 });

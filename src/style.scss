@@ -712,6 +712,10 @@ a:hover {
             }
         }
 
+        &--onsurface {
+            background-color: rgba(0, 0, 0, 0.09);
+        }
+
         &--small {
             padding: 8px 16px;
             font-size: 14px;
@@ -749,16 +753,28 @@ a:hover {
     }
 
     &-tel-modal {
-        position: fixed;
-        padding: 48px 32px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        padding: 0;
+        max-width: 480px;
         background-color: $background-surface;
+        border: none;
         box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
-        z-index: 99;
         overflow-x: hidden;
-        display: none;
+
+        &::backdrop {
+            background-color: rgba(0,0,0,.7);
+        }
+
+        &__content {
+            padding: 48px 32px;
+        }
+
+        &__footer {
+            padding: 16px 32px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.04);
+        }
 
         &__title {
             margin-top: 0;
@@ -790,27 +806,11 @@ a:hover {
             font-size: 18px;
         }
 
-        &-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 98;
-            display: none;
-        }
-
         @media screen and (max-width: 600px) {
             bottom: 0;
             right: 0;
             left: 0;
             transform: none;
-        }
-
-        &--open {
-            display: block;
-
-            &+.ac-tel-modal-backdrop {
-                display: block;
-            }
         }
     }
 }
