@@ -12,7 +12,7 @@ const telSendCode = document.getElementById('js-tel-send-code');
 const telCodeInput = document.getElementById('js-tel-code');
 const telOutput = document.getElementById('js-tel-output');
 
-onSignInSubmit = () => {
+const onSignInSubmit = () => {
     const phoneNumber = grabAndConvertPhoneNumber();
     const appVerifier = window.recaptchaVerifier;
 
@@ -31,18 +31,18 @@ onSignInSubmit = () => {
         });
 }
 
-grabAndConvertPhoneNumber = () => {
+const grabAndConvertPhoneNumber = () => {
     const phoneNumber = telNumberInput.value;
     const convertedPhoneNumber = '+33' + phoneNumber.replace(/[^0-9]/g, '');
     return convertedPhoneNumber;
 }
 
-openModal = () => {
+const openModal = () => {
     document.body.style.overflow = 'hidden';
     telModal.showModal();
 }
 
-closeModal = () => {
+const closeModal = () => {
     document.body.style.overflow = 'auto';
     telModal.close();
 
@@ -54,7 +54,7 @@ closeModal = () => {
     window.history.replaceState({}, '', '?' + urlParams.toString());
 }
 
-generateFinalPane = async () => {
+const generateFinalPane = async () => {
     document.getElementById('js-tel-pane3').scrollIntoView({behavior: 'smooth'})
 
     const tel = await getPhoneNumber();
@@ -79,30 +79,30 @@ END:VCARD`;
     else document.getElementById("js-tel-qr").appendChild(code);
 }
 
-isUserSingedIn = () => {
+const isUserSingedIn = () => {
     return !!auth.currentUser;
 }
 
-getPhoneNumber = async () => {
+const getPhoneNumber = async () => {
     const docRef = doc(firestore, 'restricted/contact');
     const docSnap = await getDoc(docRef);
 
     return docSnap.data().tel;
 }
 
-showPhoneNumber = () => {
+const showPhoneNumber = () => {
     openModal();
     window.canSkipPane = true;
 }
 
-isValidNumber = () => {
+const isValidNumber = () => {
     const phoneNumber = telNumberInput.value;
     const formatted = phoneNumber.replace(/[^0-9]/g, '');
     const regex = /0[67][0-9]{8}/;
     return regex.test(formatted);
 }
 
-verifyCode = () => {
+const verifyCode = () => {
     telSendCode.ariaDisabled = true;
     const code = telCodeInput.value;
     confirmationResult.confirm(code).then((result) => {
