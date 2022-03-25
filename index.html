@@ -447,18 +447,26 @@
     <dialog class="ac-tel-modal" id="js-tel-modal">
         <div class="ac-tel-modal__content">
             <h3 class="ac-tel-modal__title" fr="Avant de continuer ...">Before continuing ...</h3>
-            <p class="ac-tel-modal__text">Afin d'éviter le spam sur mon numéro de téléphone, veuillez renseigner votre numéro de téléphone ci-dessous. Il ne sera utilisé que pour vérifier votre demande et ne sera en aucun cas partagé. </p>
+            <div class="ac-stepper" id="js-tel-stepper">
+                <div class="ac-stepper__pane">
+                    <p class="ac-tel-modal__text">Afin d'éviter le spam sur mon numéro de téléphone, veuillez renseigner votre numéro de téléphone ci-dessous. Il ne sera utilisé que pour vérifier votre demande et ne sera en aucun cas partagé. </p>
 
-            <small class="ac-tel-modal__disclaimer">Vous recevrez un code envoyé par SMS. Des frais d'utilisation peuvent s'appliquer. This site is protected by reCAPTCHA and the Google
-                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
-
-            <form class="ac-tel-modal__inputbox" id="js-tel-form">
-                <input autofocus type="tel" class="ac-tel-modal__input" id="js-tel-number" placeholder="Numéro de téléphone" required>
-                <button class="ac-tel-modal__button ac-btn ac-btn--colored" id="js-tel-send">Vérifier</button>
-            </form>
-
-            <div id="js-tel-recaptcha"></div>
+                    <small class="ac-tel-modal__disclaimer">Vous recevrez un code envoyé par SMS. Des frais d'utilisation peuvent s'appliquer. This site is protected by reCAPTCHA and the Google
+                        <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                        <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
+        
+                    <form class="ac-tel-modal__inputbox" id="js-tel-form">
+                        <input autofocus type="tel" class="ac-tel-modal__input" id="js-tel-number" placeholder="Numéro de téléphone" pattern="0[67]( ?[0-9]{2}){4}" required>
+                        <button class="ac-tel-modal__button ac-btn ac-btn--colored" id="js-tel-send" aria-disabled="true">Vérifier</button>
+                    </form>
+                    
+                    <small class="ac-tel-modal__error" id="js-tel-error1"></small>
+                    <div id="js-tel-recaptcha"></div>
+                </div>
+                <div class="ac-stepper__pane" id="js-tel-pane2">
+                    <p class="ac-tel-modal__text">Entrez le code reçu par SMS pour valider votre numéro.</p>
+                </div>
+            </div>
         </div>
         <div class="ac-tel-modal__footer">
             <button id="js-tel-modal-close" class="ac-btn ac-btn--onsurface" fr="Annuler">Cancel</button>
