@@ -79,4 +79,10 @@ if (isFirstApril) {
 }
 
 // clean url
-history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
+document.addEventListener("DOMContentLoaded", () => {
+
+  setTimeout(() => {
+    history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
+  }, 250);
+
+});
