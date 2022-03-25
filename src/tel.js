@@ -1,11 +1,14 @@
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, firestore } from "./firebase";
+import { doc, getDoc } from "firebase/firestore/lite";
 
 const telForm = document.getElementById('js-tel-form');
 const telModal = document.getElementById('js-tel-modal');
 const telModalClose = document.getElementById('js-tel-modal-close');
 const telSendNumber = document.getElementById('js-tel-send');
 const telNumberInput = document.getElementById('js-tel-number');
+const telSendCode = document.getElementById('js-tel-send-code');
+const telCodeInput = document.getElementById('js-tel-code');
 const telStepper = document.getElementById('js-tel-stepper');
 
 onSignInSubmit = () => {
@@ -50,10 +53,25 @@ closeModal = () => {
     window.history.replaceState({}, '', '?' + urlParams.toString());
 }
 
+generateFinalPane = () => {
+    document.getElementById('js-tel-pane3').scrollIntoView({behavior: 'smooth'})
+}
+
+isUserSingedIn = () => {
+    console.log(auth.currentUser);
+    return !!auth.currentUser;
+}
+
+getPhoneNumber = async () => {
+    const docRef = doc(firestore, 'restricted/contact');
+    const docSnap = await getDoc(docRef);
+
+    console.log(docSnap);
+}
+
 showPhoneNumber = () => {
-    // detect if user is logged in
-    //
     openModal();
+    window.canSkipPane = true;
 }
 
 isValidNumber = () => {
@@ -62,6 +80,29 @@ isValidNumber = () => {
     const regex = /0[67][0-9]{8}/;
     return regex.test(formatted);
 }
+
+verifyCode = () => {
+    telSendCode.ariaDisabled = true;
+    const code = telCodeInput.value;
+    confirmationResult.confirm(code).then((result) => {
+        // User signed in successfully.
+        const user = result.user;
+        generateFinalPane();
+    }).catch((error) => {
+        document.getElementById('js-tel-error2').innerText = error.message;
+        telSendCode.ariaDisabled = false;
+        telCodeInput.value = '';
+    });
+}
+
+telSendCode.addEventListener('click', verifyCode);
+
+telCodeInput.addEventListener('keyup', (e) => {
+    const code = telCodeInput.value;
+    if (code.length === 6) {
+        verifyCode();
+    }
+});
 
 telNumberInput.addEventListener('keyup', (e) => {
     if (isValidNumber()) {
@@ -87,5 +128,11 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 telModalClose.addEventListener('click', closeModal);
+
+auth.onAuthStateChanged(user => {
+    if (user && window.canSkipPane) {
+        generateFinalPane();
+    }
+})
 
 export { showPhoneNumber };

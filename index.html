@@ -465,6 +465,16 @@
                 </div>
                 <div class="ac-stepper__pane" id="js-tel-pane2">
                     <p class="ac-tel-modal__text">Entrez le code reçu par SMS pour valider votre numéro.</p>
+
+                    <form class="ac-tel-modal__inputbox" id="js-tel-form-code">
+                        <input autofocus type="number" class="ac-tel-modal__input" id="js-tel-code" placeholder="Code à 6 chiffres" min="0" max="999999" pattern="[0-9]{6}" required>
+                        <button class="ac-tel-modal__button ac-btn ac-btn--colored" id="js-tel-send-code" aria-disabled="true">Vérifier</button>
+                    </form>
+
+                    <small class="ac-tel-modal__error" id="js-tel-error2"></small>
+                </div>
+                <div class="ac-stepper__pane" id="js-tel-pane3">
+                    <p class="ac-tel-modal__text">Merci d'avoir validé votre numéro de téléphone.</p>
                 </div>
             </div>
         </div>
