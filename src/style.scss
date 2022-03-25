@@ -812,11 +812,22 @@ a:hover {
             }
         }
 
+        &__sidebox {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+
+            #js-tel-qr-output {
+                width: 192px;
+                height: 192px;
+            }
+        }
+
         &__phonenumber {
             font-size: 32px;
+            line-height: 32px;
             font-weight: 400;
             color: $color;
-            margin-top: 64px;
         }
 
         &__error {

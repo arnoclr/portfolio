@@ -1,6 +1,7 @@
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth, firestore } from "./firebase";
 import { doc, getDoc } from "firebase/firestore/lite";
+import * as qr from "qr-ts";
 
 const telForm = document.getElementById('js-tel-form');
 const telModal = document.getElementById('js-tel-modal');
@@ -60,6 +61,22 @@ generateFinalPane = async () => {
 
     telOutput.href = "https://wa.me/+33" + tel;
     telOutput.innerText = tel.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
+
+    const VCARD = `BEGIN:VCARD
+VERSION:2.1
+N:Cellarier;Arno
+FN:Arno Cellarier
+TITLE;CHARSET=UTF-8:développeur web
+TEL:${tel}
+EMAIL:bonjour@arnocellarier.fr
+ADR;CHARSET=UTF-8:;;;;Île de France;;France
+URL:https://arnocellarier.fr/?utm_source=contact_page
+END:VCARD`;
+
+    const code = qr.renderOnCanvas(qr.generate(VCARD), "js-tel-qr-output");
+    const prev = document.getElementById("js-tel-qr-output");
+    if (prev != null) prev.replaceWith(code);
+    else document.getElementById("js-tel-qr").appendChild(code);
 }
 
 isUserSingedIn = () => {
