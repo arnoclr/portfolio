@@ -9,7 +9,7 @@ const telSendNumber = document.getElementById('js-tel-send');
 const telNumberInput = document.getElementById('js-tel-number');
 const telSendCode = document.getElementById('js-tel-send-code');
 const telCodeInput = document.getElementById('js-tel-code');
-const telStepper = document.getElementById('js-tel-stepper');
+const telOutput = document.getElementById('js-tel-output');
 
 onSignInSubmit = () => {
     const phoneNumber = grabAndConvertPhoneNumber();
@@ -53,12 +53,16 @@ closeModal = () => {
     window.history.replaceState({}, '', '?' + urlParams.toString());
 }
 
-generateFinalPane = () => {
+generateFinalPane = async () => {
     document.getElementById('js-tel-pane3').scrollIntoView({behavior: 'smooth'})
+
+    const tel = await getPhoneNumber();
+
+    telOutput.href = "https://wa.me/+33" + tel;
+    telOutput.innerText = tel.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4 $5');
 }
 
 isUserSingedIn = () => {
-    console.log(auth.currentUser);
     return !!auth.currentUser;
 }
 
@@ -66,7 +70,7 @@ getPhoneNumber = async () => {
     const docRef = doc(firestore, 'restricted/contact');
     const docSnap = await getDoc(docRef);
 
-    console.log(docSnap);
+    return docSnap.data().tel;
 }
 
 showPhoneNumber = () => {
