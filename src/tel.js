@@ -5,6 +5,7 @@ import * as qr from "qr-ts";
 
 const telForm = document.getElementById('js-tel-form');
 const telModal = document.getElementById('js-tel-modal');
+const telModalBackdrop = document.getElementById('js-tel-modal-backdrop');
 const telModalClose = document.getElementById('js-tel-modal-close');
 const telSendNumber = document.getElementById('js-tel-send');
 const telNumberInput = document.getElementById('js-tel-number');
@@ -21,8 +22,7 @@ const onSignInSubmit = () => {
             // SMS sent. Prompt user to type the code from the message, then sign the
             // user in with confirmationResult.confirm(code).
             window.confirmationResult = confirmationResult;
-            console.log('//')
-            document.getElementById('js-tel-pane2').scrollIntoView({behavior: 'smooth'})
+            document.getElementById('js-tel-pane2').scrollIntoView({behavior: 'smooth'});
             // ...
         }).catch((error) => {
             telSendNumber.ariaDisabled = false;
@@ -39,12 +39,20 @@ const grabAndConvertPhoneNumber = () => {
 
 const openModal = () => {
     document.body.style.overflow = 'hidden';
-    telModal.showModal();
+    telModal.style.display = "block";
+    telModalBackdrop.style.display = "block";
+    telModal.scrollWidth;
+    telModal.classList.add('ac-tel-modal--open');
 }
 
 const closeModal = () => {
-    document.body.style.overflow = 'auto';
-    telModal.close();
+    telModal.classList.remove('ac-tel-modal--open');
+
+    setTimeout(() => {
+        telModal.style.display = "none";
+        telModalBackdrop.style.display = "none";
+        document.body.style.overflow = 'auto';
+    }, 300);
 
     // get all current params from url
     const urlParams = new URLSearchParams(window.location.search);

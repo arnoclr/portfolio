@@ -706,15 +706,37 @@ a:hover {
     }
 
     &-tel-modal {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(.9);
+        transition: transform .3s ease, opacity .3s ease;
         padding: 0;
         max-width: 480px;
         background-color: $background-surface;
         border: none;
         box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
         overflow-x: hidden;
+        display: none;
+        opacity: 0;
+        z-index: 99;
 
-        &::backdrop {
+        &+&__backdrop {
+            position: fixed;
+            inset: 0;
             background-color: rgba(0,0,0,.7);
+            display: none;
+            transition: opacity .3s ease;
+            z-index: 98;
+        }
+
+        &--open {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+
+            &+.ac-tel-modal__backdrop {
+                opacity: 1;
+            }
         }
 
         &__content {
