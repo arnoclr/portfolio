@@ -85,5 +85,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   // clean url
-  // history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
+  setTimeout(() => {
+    history.replaceState({}, document.title, window.location.pathname + "?utm_source=copy_url")
+  }, 250);
 });
