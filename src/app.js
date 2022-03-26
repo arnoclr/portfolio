@@ -46,24 +46,28 @@ if (document.referrer) {
   referrer = url.match(/:\/\/(.[^/]+)/)[1];
 }
 
+const UTM_VERSION_NAME_STORAGE = "__utm_v1";
 const timestamp = + new Date();
 
 let tsGap;
-if (localStorage.getItem('utm_source') != null) {
-  const currentUtmData = JSON.parse(localStorage.getItem('utm_source'));
+if (localStorage.getItem(UTM_VERSION_NAME_STORAGE) != null) {
+  const currentUtmData = JSON.parse(localStorage.getItem(UTM_VERSION_NAME_STORAGE));
   tsGap = timestamp - currentUtmData.ts / 1000;
 } else {
   tsGap = Infinity;
 }
 
-const utmData = {
+let utmData = {
   s: urlParams.get('utm_source') || urlParams.get('u') || referrer,
   ts: timestamp
 }
 
 // si l'ancien referrer a été inscrit il y a plus d'un mois, on remplace par le nouveau
-if (tsGap > 60 * 60 * 24 * 30 && utmData.s != "direct")
-  localStorage.setItem('utm_source', JSON.stringify(utmData));
+if (tsGap > timestamp + 60 * 60 * 24 * 30 && utmData.s != "direct") {
+  localStorage.setItem(UTM_VERSION_NAME_STORAGE, JSON.stringify(utmData));
+}
+
+utmData = JSON.parse(localStorage.getItem(UTM_VERSION_NAME_STORAGE));
 
 const utmSource = utmData.s;
 const utmString = `Web Request #${btoa(utmSource)}`;
