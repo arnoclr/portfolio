@@ -1,4 +1,4 @@
-import "./animations";
+import "./projects";
 import { showPhoneNumber } from "./tel";
 
 // translations
@@ -25,19 +25,8 @@ videos.forEach(video => {
   });
 });
 
-// ckech if project is present in session storage
-let project = sessionStorage.getItem('js-opened-project');
-
-// check if project is passed in url
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.has('open'))
-  project = project || "p:" + urlParams.get('open');
-
-if (project) open(project);
-
 // mail button
-const emailAdress = (25435343763).toString(36).toLowerCase()+(16).toString(36).toLowerCase().split('').map(function(U){return String.fromCharCode(U.charCodeAt()+(-39))}).join('')+(387).toString(36).toLowerCase()+(function(){var w=Array.prototype.slice.call(arguments),E=w.shift();return w.reverse().map(function(K,g){return String.fromCharCode(K-E-16-g)}).join('')})(29,149,146,157,155)+(1007379).toString(36).toLowerCase()+(function(){var k=Array.prototype.slice.call(arguments),l=k.shift();return k.reverse().map(function(T,X){return String.fromCharCode(T-l-12-X)}).join('')})(45,162)+(531).toString(36).toLowerCase()+(30).toString(36).toLowerCase().split('').map(function(W){return String.fromCharCode(W.charCodeAt()+(-71))}).join('')+(567).toString(36).toLowerCase();
-
+const emailAdress = "bonjour@arnocellarier.fr";
 const emailButton = document.querySelector('.js-mail');
 
 let referrer = "direct";
@@ -56,6 +45,8 @@ if (localStorage.getItem(UTM_VERSION_NAME_STORAGE) != null) {
 } else {
   tsGap = Infinity;
 }
+
+const urlParams = new URLSearchParams(window.location.search);
 
 let utmData = {
   s: urlParams.get('utm_source') || urlParams.get('u') || referrer,
@@ -97,4 +88,10 @@ window.addEventListener('DOMContentLoaded', () => {
     url.searchParams.set('utm_source', 'copy_url');
     window.history.replaceState(null, null, url.toString());
   }, 250);
+
+  // open project passed in url
+  if (urlParams.has('open')) {
+    const projectId = "p:" + urlParams.get('open');
+    document.querySelector(`[data-to='${projectId}']`).click();
+  }
 });

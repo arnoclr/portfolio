@@ -13,6 +13,50 @@ let openedProjectName = null;
 
 const projectsImages = [];
 
+const writeUrl = (projectName = null) => {
+  let url = "?utm_source=copy_url";
+  if (projectName) {
+    url += "&open=" + projectName.replace("p:", "");
+  }
+  window.history.pushState({}, '', url);
+}
+
+const logProjectViewEvent = (projectName, seconds = 0) => {
+  if (seconds == 0) {
+    writeUrl(projectName);
+  }
+}
+
+const incrementSeconds = () => {
+  seconds++;
+}
+
+const closeProject = async () => {
+
+  // analytics
+  logProjectViewEvent(openedProjectName, seconds);
+
+  // clear url
+  writeUrl();
+
+  sessionStorage.removeItem('js-opened-project');
+  
+  // animation
+  const page = document.getElementById(openedProjectName)
+  document.body.style.overflow = '';
+
+  let {finished, cancel} = illusory(page, openedImg, {
+    duration: '.25s',
+    easing: 'cubic-bezier(.45,-0.01,0,.9)',
+    compositeOnly: true,
+    includeChildren: false
+  });
+
+  const canceled = await finished;
+  
+  pages.style.display = 'none';
+}
+
 projectsBoxes.forEach(box => {
   let img = box.querySelector('img');
 
@@ -98,33 +142,10 @@ backBtn.addEventListener('click', e => {
 })
 
 document.addEventListener('keydown', e => {
-	if (e.key === "Escape") {
-		closeProject();
-	}
+  if (e.key === "Escape") {
+    closeProject();
+  }
 });
-
-async function closeProject() {
-
-  // analytics
-  logProjectViewEvent(openedProjectName, seconds);
-
-  sessionStorage.removeItem('js-opened-project');
-  
-  // animation
-  const page = document.getElementById(openedProjectName)
-  document.body.style.overflow = '';
-
-  let {finished, cancel} = illusory(page, openedImg, {
-    duration: '.25s',
-    easing: 'cubic-bezier(.45,-0.01,0,.9)',
-    compositeOnly: true,
-    includeChildren: false
-  });
-
-  const canceled = await finished;
-  
-  pages.style.display = 'none';
-}
 
 // log event and read time when user finished read project details
 projectsContent.forEach(content => {
@@ -135,11 +156,3 @@ projectsContent.forEach(content => {
     }
   });
 })
-
-function logProjectViewEvent(projectName, seconds = 0) {
-  return null;
-}
-
-function incrementSeconds() {
-  seconds++;
-}
