@@ -272,9 +272,15 @@ a:hover {
                 cursor: pointer;
                 user-select: none;
                 -webkit-user-drag: none;
+                transform: scale(1);
+                transition: transform .2s cubic-bezier(.15,-0.23,.43,1.25);
 
                 &:hover {
                     outline: 2px dotted $background;
+                }
+
+                &:active {
+                    transform: scale(.97);
                 }
             }
 
