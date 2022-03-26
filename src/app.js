@@ -67,7 +67,9 @@ if (tsGap > timestamp + 60 * 60 * 24 * 30 && utmData.s != "direct") {
   localStorage.setItem(UTM_VERSION_NAME_STORAGE, JSON.stringify(utmData));
 }
 
-utmData = JSON.parse(localStorage.getItem(UTM_VERSION_NAME_STORAGE));
+if (localStorage.getItem(UTM_VERSION_NAME_STORAGE) != null) {
+  utmData = JSON.parse(localStorage.getItem(UTM_VERSION_NAME_STORAGE));
+}
 
 const utmSource = utmData.s;
 const utmString = `Web Request #${btoa(utmSource)}`;
