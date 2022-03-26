@@ -34,6 +34,10 @@ $image-width: 350px;
     font-weight: 400;
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     margin: 0;
     padding: 0;
