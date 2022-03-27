@@ -107,11 +107,14 @@ a:hover {
             height: 100%;
             z-index: -1;
             opacity: 0.8;
-            animation: pattern-hide .2s linear, pattern-enter 1.2s linear .2s;
-            animation-timing-function: steps(5);
 
-            @media screen and (max-width: 1350px)  {
+            @media screen and (max-width: 1349px)  {
                 opacity: 0;
+            }
+
+            @media screen and (min-width: 1350px)  {
+                animation: pattern-hide .2s linear, pattern-enter 1.2s linear .2s;
+                animation-timing-function: steps(5);
             }
         }
     }
