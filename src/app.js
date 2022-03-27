@@ -29,6 +29,14 @@ videos.forEach(video => {
 const emailAdress = "bonjour@arnocellarier.fr";
 const emailButton = document.querySelector('.js-mail');
 
+// remove referrer copy_url if page is reloaded
+if (sessionStorage.getItem('__active_session')) {
+  // rebuild url without utm_source
+  const url = new URL(window.location.href);
+  url.searchParams.delete('utm_source');
+  window.history.replaceState({}, '', url.href);
+}
+
 let referrer = "direct";
 if (document.referrer) {
   let url = document.referrer; 
@@ -94,4 +102,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const projectId = "p:" + urlParams.get('open');
     document.querySelector(`[data-to='${projectId}']`).click();
   }
+  
+  sessionStorage.setItem('__active_session', 0);
 });
