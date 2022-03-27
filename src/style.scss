@@ -742,6 +742,7 @@ a:hover {
             inset: 0;
             background-color: rgba(0,0,0,.7);
             display: none;
+            opacity: 0;
             transition: opacity .3s ease;
             z-index: 98;
         }
