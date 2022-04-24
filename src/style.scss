@@ -34,10 +34,6 @@ $image-width: 350px;
     font-weight: 400;
 }
 
-html {
-    scrollbar-gutter: stable;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -497,15 +493,21 @@ a:hover {
         z-index: 11;
         user-select: none;
 
+        &__placeholder {
+            display: none;
+            height: 210px;
+        }
+
         &__content {
             height: 350px;
+            width: 250%;
             display: flex;
             opacity: 1;
             overflow-y: hidden;
             overflow-x: scroll;
             transform: scale3d(1,1,1);
             transform-origin: top left;
-            transition: transform .3s cubic-bezier(.19,1.01,.47,.97);
+            transition: transform .3s cubic-bezier(.19,1.01,.47,.97), width .3s ease;
             background-color: $background;
 
             &:not(:hover)::-webkit-scrollbar {
@@ -520,8 +522,19 @@ a:hover {
             }
         }
 
+        &:not(.scrolled) &__content:hover {
+            width: 100%;
+        }
+
+        &.scrolled {
+            height: 140px;
+        }
+
+        &.scrolled+&__placeholder {
+            display: block;
+        }
+
         &.scrolled &__content {
-            width: 250%;
             transform: scale3d(.4, .4, 1);
             
             &-img {
@@ -531,6 +544,14 @@ a:hover {
 
         @media screen and (max-width: 768px) {
             height: 200px;
+
+            &.scrolled {
+                height: 80px;
+            }
+
+            &__placeholder {
+                height: 120px;
+            }
             
             &__content {
                 height: 200px;
