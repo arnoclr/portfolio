@@ -1,16 +1,8 @@
 import "./projects";
 import { showPhoneNumber } from "./tel";
+import { translateDocument } from "./translations";
 
-// translations
-const translatables = document.querySelectorAll('[fr]');
-
-if (navigator.language.includes('fr')) {
-  translatables.forEach(t => {
-    t.textContent = t.getAttribute('fr');
-    // remove the attribute
-    t.removeAttribute('fr');
-  });
-}
+translateDocument();
 
 // play videos only on hover
 const videos = document.querySelectorAll('video');

@@ -262,6 +262,7 @@ a:hover {
         overflow-x: scroll;
 
         &__item {
+            position: relative;
             display: flex;
             text-decoration: none;
             border: none;
@@ -306,6 +307,20 @@ a:hover {
                 writing-mode: vertical-lr;
                 text-align: end;
                 color: $background;
+                user-select: none;
+            }
+
+            &-badge {
+                position: absolute;
+                top: 16px;
+                left: 16px;
+                font-size: 12px;
+                font-weight: 400;
+                padding: 6px 10px;
+                border-radius: 4px;
+                background-color: $color;
+                color: $background;
+                pointer-events: none;
                 user-select: none;
             }
 
@@ -747,8 +762,7 @@ a:hover {
         user-select: none;
 
         &__icon {
-            height: 40% !important;
-            width: auto !important;
+            font-size: 128px !important;
             color: #AAC0B2;
         }
 

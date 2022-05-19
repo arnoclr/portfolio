@@ -1,4 +1,5 @@
 import { illusory } from "illusory";
+import { isFrench } from "./translations";
 
 const projectsBoxes = document.querySelectorAll('.js-project');
 const projects = document.querySelector('.js-projects');
@@ -62,6 +63,15 @@ projectsBoxes.forEach(box => {
   let img = box.querySelector('img');
 
   projectsImages.push(img);
+
+  const lastModified = new Date(box.dataset.lastmodified);
+
+  if (lastModified.getTime() > Date.now() - (1000 * 60 * 60 * 24 * 7)) {
+    const badge = document.createElement('div');
+    badge.classList.add('ac-slider__item-badge');
+    badge.innerText = isFrench() ? "Nouveau" : "New";
+    box.appendChild(badge);
+  }
 
   box.addEventListener('click', async e => {
     e.preventDefault();
