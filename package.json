@@ -8,6 +8,7 @@
     "@parcel/transformer-inline-string": "^2.2.1",
     "@parcel/transformer-sass": "^2.2.1",
     "parcel": "^2.0.1",
+    "posthtml-include": "^1.7.4",
     "sharp": "^0.29.3",
     "uglify-classes": "^1.2.3"
   },
