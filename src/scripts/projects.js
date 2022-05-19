@@ -7,21 +7,17 @@ const pages = document.querySelector('.js-pages');
 const projectsContent = document.querySelectorAll('.js-page-content');
 
 let seconds = 0;
-let lastHref = "";
-let disabledPushState = false;
 let openedImg = null;
 let openedProjectName = null;
 
 const projectsImages = [];
 
 const writeUrl = (projectName = null) => {
-  if (disabledPushState) return;
-  lastHref = window.location.href;
   let url = "?utm_source=copy_url";
   if (projectName) {
     url += "&open=" + projectName.replace("p:", "");
   }
-  window.history.pushState({}, '', url);
+  window.history.replaceState(null, null, url);
 }
 
 const logProjectViewEvent = (projectName, seconds = 0) => {
@@ -34,17 +30,13 @@ const incrementSeconds = () => {
   seconds++;
 }
 
-const sleep = (ms) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 const closeProject = async () => {
   if (openedProjectName == null) return;
 
   // analytics
   logProjectViewEvent(openedProjectName, seconds);
 
-  // clear url
+  // clean url
   writeUrl();
 
   sessionStorage.removeItem('js-opened-project');
@@ -155,29 +147,6 @@ document.addEventListener('keydown', e => {
     closeProject();
   }
 });
-
-window.onpopstate = history.onpushstate = function(e) {
-  const href = window.location.href;
-  const urlParams = new URLSearchParams(href);
-  const projectName = urlParams.get('open');
-
-  disabledPushState = true;
-
-  console.log(projectName);
-
-  closeProject();
-
-  console.log(projectName);
-
-  if (projectName) {
-    const projectId = "p:" + projectName;
-    sleep(600);
-    document.querySelector(`[data-to='${projectId}']`).click();
-  }
-
-  lastHref = href;
-  disabledPushState = false;
-}
 
 // log event and read time when user finished read project details
 projectsContent.forEach(content => {
