@@ -7,13 +7,14 @@ const pages = document.querySelector('.js-pages');
 const projectsContent = document.querySelectorAll('.js-page-content');
 
 let seconds = 0;
-
+let lastHref = "";
 let openedImg = null;
 let openedProjectName = null;
 
 const projectsImages = [];
 
 const writeUrl = (projectName = null) => {
+  lastHref = window.location.href;
   let url = "?utm_source=copy_url";
   if (projectName) {
     url += "&open=" + projectName.replace("p:", "");
@@ -146,6 +147,24 @@ document.addEventListener('keydown', e => {
     closeProject();
   }
 });
+
+window.onpopstate = history.onpushstate = function(e) {
+  const href = window.location.href;
+  const urlParams = new URLSearchParams(href);
+  const projectName = urlParams.get('open');
+
+  if (projectName) {
+    closeProject();
+    const projectId = "p:" + projectName;
+    setTimeout(() => {
+      document.querySelector(`[data-to='${projectId}']`).click();
+    }, 600);
+  } else {
+    closeProject();
+  }
+
+  lastHref = href;
+}
 
 // log event and read time when user finished read project details
 projectsContent.forEach(content => {
