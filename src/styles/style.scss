@@ -65,7 +65,7 @@ p, a {
     letter-spacing: -0.3px;
 }
 
-a {
+a:not(.ac-btn) {
     border-bottom: 1px dotted $color;
 }
 
@@ -703,9 +703,8 @@ a:hover {
         color: $color;
         font-size: 18px;
         text-decoration: none;
-        border: none;
+        border: 1px solid transparent;
         border-radius: 2px;
-        border-bottom: 2px solid transparent;
         cursor: pointer;
         transform: scale(1);
         transition: transform .2s ease;
