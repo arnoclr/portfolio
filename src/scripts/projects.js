@@ -1,5 +1,6 @@
 import { illusory } from "illusory";
 import { isFrench } from "./translations";
+import DraggableScrollArea from 'draggable-scrollarea';
 
 const projectsBoxes = document.querySelectorAll('.js-project');
 const projects = document.querySelector('.js-projects');
@@ -12,6 +13,14 @@ let openedImg = null;
 let openedProjectName = null;
 
 const projectsImages = [];
+
+const forwardsButton = document.querySelector('.js-slider-forwards');
+const draggableProjects = new DraggableScrollArea(slider);
+draggableProjects.hideOnEnd(forwardsButton);
+
+forwardsButton.addEventListener('click', () => {
+  draggableProjects.forwards()
+});
 
 const writeUrl = (projectName = null) => {
   let url = "?utm_source=copy_url";

@@ -22,6 +22,7 @@
     "url": "git+https://github.com/arnoclr/portfolio.git"
   },
   "dependencies": {
+    "draggable-scrollarea": "^1.0.4",
     "firebase": "^9.6.9",
     "illusory": "^2.0.3",
     "qr-ts": "^1.0.3"

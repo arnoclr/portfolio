@@ -257,6 +257,7 @@ a:hover {
     }
 
     &-slider {
+        position: relative;
         display: flex;
         width: 100%;
         overflow-x: scroll;
@@ -266,6 +267,7 @@ a:hover {
             display: flex;
             text-decoration: none;
             border: none;
+            cursor: unset;
 
             &:hover {
                 border: none;
@@ -290,6 +292,7 @@ a:hover {
                 -webkit-user-drag: none;
                 transform: scale(1);
                 transition: transform .2s cubic-bezier(.15,-0.23,.43,1.25);
+                cursor: zoom-in;
 
                 &:hover {
                     outline: 2px dotted $background;
@@ -329,6 +332,37 @@ a:hover {
                 &:nth-child(#{$i}) {
                     animation: hide (($i)-1) * 0.1s, slide-in-from-left (6-($i)) * 0.1s cubic-bezier(.32,.21,0,.97) (($i)-1) * 0.1s;
                 }
+            }
+        }
+
+        &__forwards {
+            position: sticky;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+            height: 48px;
+            min-width: 48px;
+            display: grid;
+            place-items: center;
+            background-color: $background;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+            transition: transform .3s cubic-bezier(.15,-0.23,.43,1.25), box-shadow .3s ease;
+
+            &:hover {
+                box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.20);
+            }
+
+            &:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+
+            i {
+                font-size: 28px;
+                color: $color;
+                width: 28px;
             }
         }
 
