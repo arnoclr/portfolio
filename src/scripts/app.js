@@ -1,8 +1,13 @@
 import "./projects";
 import { showPhoneNumber } from "./tel";
 import { translateDocument } from "./translations";
+import { requestNotificationPermission } from "./notifications";
 
 translateDocument();
+
+document.getElementById("notif").addEventListener("click", e => {
+  requestNotificationPermission();
+});
 
 // play videos only on hover
 const videos = document.querySelectorAll('video');

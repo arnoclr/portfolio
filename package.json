@@ -13,9 +13,9 @@
     "uglify-classes": "^1.2.3"
   },
   "scripts": {
-    "build": "parcel build index.html 404.html && uglify-classes --method hash:5 --prefix ac-",
-    "build-legacy": "parcel build index.html 404.html",
-    "dev": "npx parcel"
+    "build": "npm run build-legacy && uglify-classes --method hash:5 --prefix ac-",
+    "build-legacy": "parcel build firebase-messaging-sw.js index.html 404.html",
+    "dev": "npm run build-legacy && npx parcel"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "draggable-scrollarea": "^1.0.4",
-    "firebase": "^9.6.9",
+    "firebase": "^9.8.1",
     "illusory": "^2.0.3",
     "qr-ts": "^1.0.3"
   }
