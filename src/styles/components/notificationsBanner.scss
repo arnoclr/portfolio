@@ -1,0 +1,84 @@
+.ac-notifications-banner {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    bottom: 0;
+    left: var(--padding);
+    right: var(--padding);
+    background-color: $color;
+    padding: 8px 16px;
+    transform: translateY(110%);
+    transition: transform .3s ease-in-out;
+    z-index: 9;
+
+    &--visible {
+        transform: translateY(0);
+    }
+
+    &__text {
+        color: $background;
+        user-select: none;
+    }
+
+    &__enable {
+        height: 48px;
+        padding: 0 12px;
+        font-size: 16px;
+        font-weight: 600;
+        color: $background;
+        background-color: transparent;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    &-backdrop {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 10;
+        display: grid;
+        place-items: center;
+
+        &__wrapper {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 52px;
+            user-select: none;
+        }
+
+        &__text {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        i {
+            color: #fff;
+            font-size: 78px;
+        }
+
+        &__south {
+            opacity: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        left: 0;
+        right: 0;
+
+        &-backdrop {
+            &__south {
+                opacity: 1;
+            }
+
+            &__north {
+                opacity: 0;
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 import { illusory } from "illusory";
 import { isFrench } from "./translations";
+import { showNotificationPopup, hideNotificationPopup } from "./notifications";
 import DraggableScrollArea from 'draggable-scrollarea';
 
 const projectsBoxes = document.querySelectorAll('.js-project');
@@ -131,6 +132,7 @@ pages.addEventListener('scroll', () => {
   }
 })
 
+let lastScrollTop = 0;
 projectsContent.forEach(page => {
   const caroussel = page.querySelector('.js-projectcaroussel');
 
@@ -140,6 +142,14 @@ projectsContent.forEach(page => {
     } else {
       caroussel.classList.remove('scrolled');
     }
+
+    if (page.scrollTop > lastScrollTop) {
+      hideNotificationPopup();
+    } else {
+      showNotificationPopup();
+    }
+
+    lastScrollTop = page.scrollTop;
   })
 })
 
