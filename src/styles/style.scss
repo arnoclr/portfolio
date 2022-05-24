@@ -372,24 +372,7 @@ a:hover {
             padding-bottom: 12px;
 
             &::-webkit-scrollbar {
-                height: 10px;
-            }
-
-            &::-webkit-scrollbar-track {
-                background-color: transparent;
-                border-bottom: 1px solid transparent;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background: $background;
-                border-left: var(--padding) #000 solid;
-                border-right: 8px #000 solid;
-                background-clip: padding-box;
-                cursor: ew-resize;
-
-                &:hover {
-                    background: #ccc;
-                }
+                display: none;
             }
         }
     }
@@ -561,8 +544,8 @@ a:hover {
             transition: transform .3s cubic-bezier(.19,1.01,.47,.97), width .3s ease;
             background-color: $background;
 
-            &:not(:hover)::-webkit-scrollbar {
-                opacity: 0;
+            &::-webkit-scrollbar {
+                display: none;
             }
 
             &-img {

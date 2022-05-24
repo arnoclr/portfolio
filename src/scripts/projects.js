@@ -8,6 +8,7 @@ const projects = document.querySelector('.js-projects');
 const slider = document.querySelector('.js-slider');
 const pages = document.querySelector('.js-pages');
 const projectsContent = document.querySelectorAll('.js-page-content');
+const imagesSliders = document.querySelectorAll('.ac-projectcaroussel__content');
 
 let seconds = 0;
 let openedImg = null;
@@ -186,3 +187,7 @@ projectsContent.forEach(content => {
     }
   });
 })
+
+imagesSliders.forEach(slider => {
+  const caroussel = new DraggableScrollArea(slider);
+});
