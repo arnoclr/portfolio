@@ -1,0 +1,9 @@
+.ac-msm {
+    padding: 32px var(--padding);
+
+    &-optimisations-boxes {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+    }
+}

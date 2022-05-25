@@ -1,0 +1,46 @@
+.ac-box {
+    &-thumb {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        cursor: pointer;
+
+        &__img {
+            width: 100%;
+            height: auto;
+        }
+
+        &__title {
+            font: 400 32px Nimbus Sans, Arial, sans-serif;
+            color: $color;
+        }
+
+        &:hover &__title {
+            text-decoration: underline;
+        }
+    }
+
+    &-content {
+        position: fixed;
+        width: 100%;
+        max-width: calc(100% - var(--padding) * 2);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        padding: 22px;
+        border-radius: 6px;
+        background-color: #D4E1DF;
+        z-index: 9;
+    }
+
+    &-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 8;
+        opacity: 0;
+        transition: opacity 0.35s ease-in-out;
+    }
+}

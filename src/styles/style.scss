@@ -5,6 +5,7 @@ $background-surface: #ddebe7;
 $color-error: #db2f27;
 $image-width: 350px;
 
+@import "components/boxes.scss";
 @import "components/notificationsBanner.scss";
 
 :root {
