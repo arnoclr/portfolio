@@ -21,15 +21,18 @@
     }
 
     &-content {
+        box-sizing: border-box;
         position: fixed;
         width: 100%;
         max-width: calc(100% - var(--padding) * 2);
+        max-height: calc(100% - 128px);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        overflow: auto;
         display: none;
         padding: 22px;
-        border-radius: 6px;
+        border-radius: 2px;
         background-color: #D4E1DF;
         z-index: 9;
     }
@@ -43,4 +46,16 @@
         opacity: 0;
         transition: opacity 0.35s ease-in-out;
     }
+@media (max-width: 768px) {
+    &-content {
+        max-height: 100%;
+        max-width: 100%;
+        border-radius: 0px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 128px;
+        transform: none;
+    }
+}
 }

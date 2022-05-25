@@ -7,6 +7,7 @@ boxes.forEach(boxWrapper => {
     const boxThumbnail = boxWrapper.querySelector('img');
     const boxContent = boxWrapper.querySelector('aside');
     const boxBackdrop = boxWrapper.querySelector('.ac-box-backdrop');
+    const closeButtons = boxWrapper.querySelectorAll('.js-box-close');
 
     let isOpened = false;
 
@@ -51,6 +52,10 @@ boxes.forEach(boxWrapper => {
 
         boxThumbnail.style.visibility = 'hidden';
     };
+
+    closeButtons.forEach(closeButton => {
+        closeButton.addEventListener('click', closeBox);
+    });
 
     boxButton.addEventListener('click', openBox);
     boxBackdrop.addEventListener('click', closeBox);
