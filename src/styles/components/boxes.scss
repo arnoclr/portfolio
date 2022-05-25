@@ -47,6 +47,13 @@
         transition: opacity 0.35s ease-in-out;
     }
 @media (max-width: 768px) {
+    &-thumb {
+            gap: 12px;
+    
+            &__title {
+                font-size: 22px;
+            }
+        }
     &-content {
         max-height: 100%;
         max-width: 100%;
