@@ -526,6 +526,22 @@ a:hover {
                 color: #000;
                 text-decoration: none;
             }
+
+            a {
+                border: none;
+            }
+        }
+
+        &--small &__row {
+            padding: 8px 0;
+            font-size: 36px;
+            line-height: 40px;
+            letter-spacing: -1px;
+
+            &-number {
+                font-size: 52px;
+                line-height: 48px;
+            }
         }
     }
 
