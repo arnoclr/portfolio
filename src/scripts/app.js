@@ -1,4 +1,5 @@
 import "./projects";
+import "./boxes";
 import { showPhoneNumber } from "./tel";
 import { translateDocument } from "./translations";
 

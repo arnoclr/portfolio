@@ -1,10 +1,212 @@
+<link rel="stylesheet" href="/src/styles/projects/msm.scss">
+
 <section class="ac-projects-details__page" id="p:msm">
     <div class="ac-projects-details__page-content js-page-content">
-        <div class="ac-empty">
-            <i class="ac-empty__icon material-icons-sharp">bug_report</i>
-            <h3 class="ac-empty__title">Mont-Saint-Michel - Forum UNESCO</h3>
-            <p class="ac-empty__text" fr="Ce projet est encore en construction. Vous pouvez participer à notre bêta test pour nous aider à l'améliorer avant sa mise en ligne.">This project is not finished yet. We have opened a beta test phase so you can help us to enhance the website before his release.</p>
-            <a target="_blank" href="//arnocellarier.fr/iyou37" class="ac-btn ac-btn--colored"><span fr="Participer à la bêta test">Request beta test</span></a>
+        <div class="ac-msm">
+            <h1>Mont-Saint-Michel — Forum UNESCO</h1>
+            <p>Ce site web a été réalisé dans le cadre d'un projet universitaire de première année, qui consistait à
+                mettre en avant un lieu inscrit au patrimoine mondial de l'UNESCO à travers un site web.</p>
+
+            <p class="ac-msm-disclaimer">Ce site n'est pas encore en ligne, cliquez sur la bannière ci-dessous pour
+                activer les notifications et être prévenu quand le site sera disponible.</p>
+
+            <h3 class="ac-features-title">Fonctionnalités principales</h3>
+            <div class="ac-features">
+                <div class="ac-features__item">
+                    <video class="ac-features__item-img" loop muted playsinline>
+                        <source src="/static/img/msm/msm_visite.webm" type="video/webm">
+                    </video>
+                    <div class="ac-features__item-content">
+                        <h3 class="ac-features__item-content-title">Survolez le Mont</h3>
+                        <p class="ac-features__item-content-text">Découvrez les meilleurs coins du Mont dans une visite
+                            immersive en 3D.</p>
+                    </div>
+                </div>
+                <div class="ac-features__item">
+                    <video class="ac-features__item-img" loop muted playsinline>
+                        <source src="/static/img/msm/msm_map.webm" type="video/webm">
+                    </video>
+                    <div class="ac-features__item-content">
+                        <h3 class="ac-features__item-content-title">Découvrez des lieux intéressants</h3>
+                        <p class="ac-features__item-content-text">Ouvrez la carte et regardez comment vous pourrez
+                            occuper votre journée sur le Mont.</p>
+                    </div>
+                </div>
+                <div class="ac-features__item">
+                    <video class="ac-features__item-img" loop muted playsinline>
+                        <source src="/static/img/msm/msm_quiz.webm" type="video/webm">
+                    </video>
+                    <div class="ac-features__item-content">
+                        <h3 class="ac-features__item-content-title">Testez vos connaissances</h3>
+                        <p class="ac-features__item-content-text">Répondez à des questions pour voir si vous connaissez
+                            réellement le Mont.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="ac-features-title">Étapes de réflexion</h3>
+            <p>Avant de se lancer, l’étape la plus importante était de choisir un lieu. Nous avions le choix parmi plus
+                de 1000 lieux, dont 49 en France. Nous avons privilégié un lieu français pour mettre en avant notre
+                patrimoine, mais surtout pour pouvoir nous y rendre plus facilement afin d’y faire des photos ou prendre
+                des renseignements. Nous avons donc choisi le <a target="_blank" href="/ssun66">Mont-Saint-Michel et
+                    sa baie</a>.
+            </p>
+            <p>Les recherches ont été une partie importante du projet, que ce soit dans des ouvrages ou sur internet. Il
+                s’agit de recherches historiques pour les retranscrire sur la frise chronologique ou encore les
+                questions du quiz, mais aussi des recherches plus actuelles pour savoir ce qu’il est possible de faire
+                sur place.
+            </p>
+            <p>Nous avons ensuite réfléchi aux différents écrans du site, qui ont légèrement évolué depuis. Il s’agit
+                ici d’un premier wireframing qui nous permet de placer les différents éléments et ainsi voir comment les
+                disposer de façon optimale.</p>
+
+            <div class="ac-msm-whiteboard">
+                <img src="/static/img/msm/image3.png?width=1024&as=webp" height="340"
+                    alt="Dessins d'interfaces sur un tableau blanc">
+                <img src="/static/img/msm/image1.png?width=1024&as=webp" height="340"
+                    alt="Dessins d'interfaces sur un tableau blanc">
+            </div>
+            <small><i>Premier prototype d’interface sur tableau blanc, Septembre 2021</i></small>
+
+            <p>Nous avons très vite informatisé ce wireframing pour commencer à réfléchir aux tailles de textes, aux
+                espacements et autres.
+            </p>
+
+            <img src="/static/img/msm/image4.png?width=1024&as=webp" alt="Wireframing de la visite en 3D">
+            <br><small><i>Wireframing de la visite virtuelle sur mobile</i></small>
+
+            <p>Il est important de commencer à réfléchir à l’aspect technique pendant la réalisation du wireframing, car
+                celui ci peut conditionner certains éléments de l’interface</p>
+
+            <h3 class="ac-features-title">Aspects techniques</h3>
+            <div class="ac-msm-optimisations-boxes">
+                <div class="js-box">
+                    <div class="ac-box-thumb">
+                        <img class="ac-box-thumb__img" src="/static/img/msm/boxes/image_reduce.svg"
+                            alt="Réduction de la taille des images">
+                        <span class="ac-box-thumb__title">Visite virtuelle</span>
+                    </div>
+                    <aside class="ac-box-content">
+                        <h3>Mise en place de la visite virtuelle</h3>
+                        <p>Pour cette fonctionnalité, nous avons eu 3 grandes idées.</p>
+
+                        <h4>Modèle 3D</h4>
+                        <p>Nous avons d'abord pensé à un modèle en 3D du Mont, que l'on pourrait bouger comme on veut
+                            pour passer sur toutes les
+                            étapes de la visite. Cependant, le seul modèle que l'on a trouvé et libre de droit n'était
+                            pas assez détaillé pour
+                            notre visite.</p>
+                        <img src="/static/img/msm/boxes/3d.png?as=webp" alt="Modèle 3D du Mont">
+
+                        <h4>Animation à l'aide d'images</h4>
+                        <p>Nous avons utilisé Google Earth Studio, qui permet de générer travellings en 3D sur des lieux
+                            réels grâce aux données
+                            de Google Earth. Ce service est utilisable gratuitement pour des projets non commerciaux
+                            comme le nôtre. Nous avions
+                            réalisé une première version de la visite virtuelle composée de 1080 images, qui changeaient
+                            au fur et à mesure de
+                            l’avancée, ce qui permettait de pouvoir s'arrêter à n’importe quel moment et de conserver
+                            une qualité correcte.
+                        </p>
+                        <img src="/static/img/msm/boxes/webps.png?as=webp" alt="Plusieurs images dans un dossier">
+                        <p>Cependant, la visite pesait 140 Mo, même en ayant optimisé les images au maximum, donc
+                            l'expérience était dégradée
+                            sur des réseaux plus lents.
+                        </p>
+
+                        <h4>Vidéos</h4>
+                        <p>Nous avons donc opté pour des séquences vidéos, qui servent à lier les différents lieux, tout
+                            en conservant des des
+                            images pour avoir une qualité optimale au moment des arrêts sur les étapes. Il a cependant
+                            fallu encoder les vidéos
+                            dans les deux sens, car il est impossible de jouer une vidéo à l’envers. De cette manière,
+                            nous avons réduit par 10
+                            la taille de la visite, tout en gagnant en fluidité.</p>
+
+                        <button class="ac-btn ac-btn--outlined js-box-close">Fermer</button>
+                    </aside>
+                    <aside class="ac-box-backdrop"></aside>
+                </div>
+
+                <div class="js-box">
+                    <div class="ac-box-thumb">
+                        <img class="ac-box-thumb__img" src="/static/img/msm/boxes/translations.svg"
+                            alt="Réduction de la taille des images">
+                        <span class="ac-box-thumb__title">Traductions</span>
+                    </div>
+                    <aside class="ac-box-content">
+                        <h3>Traductions</h3>
+                        <p>Les traductions sont enregistrées dans une base de données SQL, sous forme d’une clé, par
+                            exemple “home.hero.title”
+                            qui permet d'accéder à toutes les traductions, ici “Bienvenue au Mont-Saint-Michel”. Une
+                            subtilité est que nous
+                            proposons notre site en arabe, qui est une langue qui se lit de droite à gauche, il a donc
+                            fallu faire quelques
+                            ajustements sur le site.</p>
+                        <img src="/static/img/msm/boxes/translations.png?as=webp" alt="Base de données des traductions">
+                        <button class="ac-btn ac-btn--outlined js-box-close">Fermer</button>
+                    </aside>
+                    <aside class="ac-box-backdrop"></aside>
+                </div>
+
+                <div class="js-box">
+                    <div class="ac-box-thumb">
+                        <img class="ac-box-thumb__img" src="/static/img/msm/boxes/caching.svg"
+                            alt="Réduction de la taille des images">
+                        <span class="ac-box-thumb__title">Mise en cache</span>
+                    </div>
+                    <aside class="ac-box-content">
+                        <h3>Mise en cache</h3>
+                        <p>Pour accélérer les appels vers les services externes, comme les actualités Google News, ou
+                            les images Flickr, nous
+                            avons mis en place un système de cache. De sorte, les infos ne sont rafraîchies que quelques
+                            fois par jour, ce qui
+                            accélère le temps de chargement pour tous les utilisateurs le long de la journée.</p>
+                        <img src="/static/img/msm/boxes/cache_schema.png?as=webp"
+                            alt="Schéma du fonctionnement de la mise en cache">
+                        <button class="ac-btn ac-btn--outlined js-box-close">Fermer</button>
+                    </aside>
+                    <aside class="ac-box-backdrop"></aside>
+                </div>
+
+            </div>
+
+            <h3 class="ac-features-title">Communication</h3>
+            <div class="ac-msm-tiles">
+                <div class="ac-msm-tiles-tile">
+                    <h4>Benchmarking</h4>
+                    <p>Pour trouver des idées de fonctionnalités, nous avons regardé analysé des sites dans le même type
+                        que le nôtre, comme celui du <a target="_blank" href="/degl36">musée d’Orsay</a> ou du <a
+                            target="_blank" href="/ippy23">Louvre</a>, mais aussi des sites plus populaires
+                        comme <a target="_blank" href="/endr44">Google Arts & Culture</a>, qui possède un grand nombre
+                        de
+                        fonctionnalités intéressantes.</p>
+                </div>
+
+                <div class="ac-msm-tiles-tile">
+                    <h4>Engagement</h4>
+                    <p>Nous avons sollicité un maximum de personnes, que ce soit des créateurs ou des utilisateurs. Nous
+                        avons partagé en novembre 2021 un premier formulaire avec des questions générales sur le site,
+                        pour savoir ce qu’ils attendaient d’un site sur le Mont-Saint-Michel, en termes d’informations
+                        mais aussi de fonctionnalités. Nous avons reçu plus de 800 réponses dont près de 300 personnes
+                        qui ont laissé leur adresse email pour suivre les avancées du projet. </p>
+                </div>
+
+                <div class="ac-msm-tiles-tile">
+                    <h4>Bêta Test</h4>
+                    <p>Nous avons organisé une phase de bêta test dans laquelle nous avons sollicité une trentaine de
+                        personnes, qui ont navigué sur notre site pour repérer les bugs et les points à améliorer. Nous
+                        avons pour cela utilisé <a target="_blank" href="/thon98">Hotjar</a> afin de voir comment les
+                        gens utilisent notre site et sur quelles
+                        pages ils passaient le plus de temps.
+                    </p>
+                </div>
+            </div>
+
+            <br>
+            <a class="ac-btn js-next-project">Projet suivant : Portail AC <i
+                    class="material-icons-sharp">arrow_forward</i></a>
+
         </div>
     </div>
 </section>

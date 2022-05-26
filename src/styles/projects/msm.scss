@@ -1,0 +1,80 @@
+@import "../_vars.scss";
+
+.ac-msm {
+    padding: 32px var(--padding);
+
+    h1 {
+        font-size: 32px;
+    }
+
+    &-disclaimer {
+        padding: 22px;
+        border-radius: 2px;
+        color: $background;
+        background-color: $color;
+        user-select: none;
+    }
+
+    &-whiteboard {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+
+        img {
+            height: 340px !important;
+            width: auto;
+        }
+    }
+
+    &-optimisations-boxes {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        max-width: 800px;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+    }
+
+    &-tiles {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 64px;
+
+        &-tile {
+            padding: 32px 22px;
+            border-radius: 2px;
+            background-color: $color;
+            color: $background;
+
+            h4 {
+                margin-top: 0;
+                font-size: 22px;
+                font-weight: 600;
+                user-select: none;
+            }
+
+            a {
+                color: #aaa;
+            }
+
+            p {
+                margin-bottom: 0;
+                font-size: 16px;
+
+                &::selection {
+                    background-color: #fff;
+                    color: #000;
+                }
+            }
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+    }
+}
