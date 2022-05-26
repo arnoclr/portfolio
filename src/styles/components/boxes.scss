@@ -2,16 +2,17 @@
     &-thumb {
         display: flex;
         flex-direction: column;
-        gap: 22px;
+        gap: 12px;
         cursor: pointer;
 
         &__img {
             width: 100%;
             height: auto;
+            border-radius: 2px;
         }
 
         &__title {
-            font: 400 32px Nimbus Sans, Arial, sans-serif;
+            font: 400 18px Nimbus Sans, Arial, sans-serif;
             color: $color;
         }
 
@@ -46,23 +47,17 @@
         opacity: 0;
         transition: opacity 0.35s ease-in-out;
     }
-@media (max-width: 768px) {
-    &-thumb {
-            gap: 12px;
-    
-            &__title {
-                font-size: 22px;
-            }
+
+    @media (max-width: 768px) {
+        &-content {
+            max-height: 100%;
+            max-width: 100%;
+            border-radius: 0px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 128px;
+            transform: none;
         }
-    &-content {
-        max-height: 100%;
-        max-width: 100%;
-        border-radius: 0px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 128px;
-        transform: none;
     }
-}
 }

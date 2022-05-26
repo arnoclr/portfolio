@@ -1,9 +1,4 @@
-$color: #013b01;
-$color-hover: #000000;
-$background: #ecf3f2;
-$background-surface: #ddebe7;
-$color-error: #db2f27;
-$image-width: 350px;
+@import "_vars.scss";
 
 @import "components/boxes.scss";
 @import "components/notificationsBanner.scss";
@@ -53,15 +48,18 @@ body {
     0% {
         background-position: 0 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0 50%;
     }
 }
 
-p, a {
+p,
+a {
     font-size: 16px;
     line-height: 18px;
     text-decoration: none;
@@ -107,11 +105,11 @@ a:hover {
             z-index: -1;
             opacity: 0.8;
 
-            @media screen and (max-width: 1349px)  {
+            @media screen and (max-width: 1349px) {
                 opacity: 0;
             }
 
-            @media screen and (min-width: 1350px)  {
+            @media screen and (min-width: 1350px) {
                 animation: pattern-hide .2s linear, pattern-enter 1.2s linear .2s;
                 animation-timing-function: steps(5);
             }
@@ -122,6 +120,7 @@ a:hover {
         0% {
             opacity: 0;
         }
+
         100% {
             opacity: 0;
         }
@@ -132,18 +131,23 @@ a:hover {
             transform: translate3D(100%, 125%, 0);
             opacity: 0;
         }
+
         20% {
             opacity: 0.8;
         }
+
         40% {
             opacity: 0.4;
         }
+
         60% {
             opacity: 0.6;
         }
+
         80% {
             opacity: 0.8;
         }
+
         100% {
             transform: translate3D(0, 0, 0);
             opacity: 1;
@@ -155,9 +159,9 @@ a:hover {
         display: flex;
         flex-direction: column;
         gap: 48px;
-        animation: pattern-hide .2s, header-fadein .3s cubic-bezier(.2,.96,.21,.96) .2s forwards;
+        animation: pattern-hide .2s, header-fadein .3s cubic-bezier(.2, .96, .21, .96) .2s forwards;
 
-        &__title  {
+        &__title {
             font-size: 5rem;
             line-height: 70px;
             font-weight: 400;
@@ -231,6 +235,7 @@ a:hover {
             transform: translate3d(-2%, 0, 0);
             opacity: 0;
         }
+
         100% {
             transform: translate3d(0, 0, 0);
             opacity: 1;
@@ -294,7 +299,7 @@ a:hover {
                 user-select: none;
                 -webkit-user-drag: none;
                 transform: scale(1);
-                transition: transform .2s cubic-bezier(.15,-0.23,.43,1.25);
+                transition: transform .2s cubic-bezier(.15, -0.23, .43, 1.25);
                 cursor: zoom-in;
 
                 &:hover {
@@ -333,7 +338,7 @@ a:hover {
             /* animations */
             @for $i from 1 through 5 {
                 &:nth-child(#{$i}) {
-                    animation: hide (($i)-1) * 0.1s, slide-in-from-left (6-($i)) * 0.1s cubic-bezier(.32,.21,0,.97) (($i)-1) * 0.1s;
+                    animation: hide (($i)-1) * 0.1s, slide-in-from-left (6-($i)) * 0.1s cubic-bezier(.32, .21, 0, .97) (($i)-1) * 0.1s;
                 }
             }
         }
@@ -351,11 +356,11 @@ a:hover {
             cursor: pointer;
             border: none;
             border-radius: 4px;
-            box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
-            transition: transform .3s cubic-bezier(.15,-0.23,.43,1.25), box-shadow .3s ease;
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.20);
+            transition: transform .3s cubic-bezier(.15, -0.23, .43, 1.25), box-shadow .3s ease;
 
             &:hover {
-                box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.20);
+                box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.20);
             }
 
             &:active {
@@ -380,7 +385,7 @@ a:hover {
 
     @keyframes slide-in-from-left {
         0% {
-            transform:  translateX(-25%);
+            transform: translateX(-25%);
             opacity: 0;
         }
 
@@ -404,7 +409,7 @@ a:hover {
         position: fixed;
         object-fit: cover;
         object-position: bottom;
-        transition: all .3s cubic-bezier(.62,.08,.05,.87);
+        transition: all .3s cubic-bezier(.62, .08, .05, .87);
     }
 
     &-projects-details {
@@ -457,7 +462,10 @@ a:hover {
                     padding: 32px;
                 }
 
-                h1, h2, h3, p {
+                h1,
+                h2,
+                h3,
+                p {
                     font-weight: 400;
                 }
 
@@ -471,7 +479,7 @@ a:hover {
 
         @media screen and (max-width: 768px) {
             overflow-x: scroll;
-            
+
             &__page {
                 display: block;
                 overflow-y: scroll;
@@ -540,9 +548,9 @@ a:hover {
             opacity: 1;
             overflow-y: hidden;
             overflow-x: scroll;
-            transform: scale3d(1,1,1);
+            transform: scale3d(1, 1, 1);
             transform-origin: top left;
-            transition: transform .3s cubic-bezier(.19,1.01,.47,.97), width .3s ease;
+            transition: transform .3s cubic-bezier(.19, 1.01, .47, .97), width .3s ease;
             background-color: $background;
 
             &::-webkit-scrollbar {
@@ -571,7 +579,7 @@ a:hover {
 
         &.scrolled &__content {
             transform: scale3d(.4, .4, 1);
-            
+
             &-img {
                 opacity: 0.3;
             }
@@ -587,7 +595,7 @@ a:hover {
             &__placeholder {
                 height: 120px;
             }
-            
+
             &__content {
                 height: 200px;
             }
@@ -808,7 +816,7 @@ a:hover {
         max-width: 480px;
         background-color: $background-surface;
         border: none;
-        box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, .1);
         overflow-x: hidden;
         display: none;
         opacity: 0;
@@ -817,7 +825,7 @@ a:hover {
         &+&__backdrop {
             position: fixed;
             inset: 0;
-            background-color: rgba(0,0,0,.7);
+            background-color: rgba(0, 0, 0, .7);
             display: none;
             opacity: 0;
             transition: opacity .3s ease;
@@ -942,6 +950,6 @@ a:hover {
     transition: none !important;
 }
 
-.grecaptcha-badge { 
+.grecaptcha-badge {
     visibility: hidden;
 }
