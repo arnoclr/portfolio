@@ -58,12 +58,14 @@
             }
 
             a {
-                color: #aaa;
+                color: #eee;
+                text-decoration: underline;
             }
 
             p {
                 margin-bottom: 0;
                 font-size: 16px;
+                line-height: 22px;
 
                 &::selection {
                     background-color: #fff;

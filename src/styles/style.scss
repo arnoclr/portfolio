@@ -620,6 +620,11 @@ a:hover {
             &-img {
                 width: 100%;
                 height: auto;
+                opacity: 0.6;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
 
             &-content {
