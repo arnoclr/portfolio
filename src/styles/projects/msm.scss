@@ -79,4 +79,10 @@
             gap: 8px;
         }
     }
+
+    @media (max-width: 768px) {
+        h1 {
+            margin-top: 78px;
+        }
+    }
 }
