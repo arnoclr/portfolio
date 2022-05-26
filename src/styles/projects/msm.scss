@@ -7,6 +7,14 @@
         font-size: 32px;
     }
 
+    &-disclaimer {
+        padding: 22px;
+        border-radius: 2px;
+        color: $background;
+        background-color: $color;
+        user-select: none;
+    }
+
     &-whiteboard {
         display: flex;
         gap: 8px;
