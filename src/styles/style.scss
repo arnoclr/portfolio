@@ -633,14 +633,17 @@ a:hover {
         gap: 32px;
 
         &__item {
-            &-img {
-                width: 100%;
-                height: auto;
+            video {
                 opacity: 0.6;
 
                 &:hover {
                     opacity: 1;
                 }
+            }
+
+            &-img {
+                width: 100%;
+                height: auto;
             }
 
             &-content {
