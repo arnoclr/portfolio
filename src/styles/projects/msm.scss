@@ -5,6 +5,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 16px;
+        max-width: 800px;
 
 @media (max-width: 768px) {
         grid-template-columns: 1fr 1fr;
