@@ -1,0 +1,133 @@
+$primary: $color;
+$primary-trans: $color-trans;
+$border: #676767AA;
+$duration: .35s;
+$bezier: cubic-bezier(.42, -0.37, .38, 1.11);
+$transition: $duration $bezier;
+
+.ac-switch {
+    position: relative;
+    display: block;
+    height: 32px;
+    width: 52px;
+
+    &--loading {
+        pointer-events: none;
+        cursor: progress;
+        animation: flicking 1s infinite;
+    }
+
+    &__input {
+        visibility: hidden;
+    }
+
+    &__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        background: $primary-trans;
+        border: 2px solid $border;
+        border-radius: 16px;
+        transition: background $transition, border $transition;
+    }
+
+    &__dot {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        left: 0;
+        top: 0;
+        margin: 2px;
+        height: 28px;
+        width: 28px;
+        border-radius: 14px;
+        background: $border;
+        animation: m3-switch-off $transition forwards;
+        transition: transform $transition, background $transition;
+    }
+
+    &__dot-icon {
+        height: 16px;
+        opacity: 0;
+        transition: opacity $transition;
+    }
+
+    &__input:checked~&__dot &__dot-icon {
+        opacity: 1;
+    }
+
+    &__input:checked~&__background {
+        border: none;
+        background: $primary;
+    }
+
+    &__input:active~&__dot {
+        transform: scale(1);
+    }
+
+    &__input:checked~&__dot {
+        background: #fff;
+        animation: m3-switch-on $transition forwards;
+    }
+
+    &__input:checked:active~&__dot {
+        transform: scale(0.57) translateX(32px);
+    }
+}
+
+@keyframes m3-switch-on {
+    0% {
+        transform: scale(0.57) translateX(0);
+    }
+
+    33% {
+        transform: scale(1.2) translateX(0);
+    }
+
+    45% {
+        transform: scale(1) translateX(0);
+    }
+
+    100% {
+        transform: scale(1) translateX(20px);
+    }
+}
+
+@keyframes m3-switch-off {
+    0% {
+        transform: scale(1) translateX(20px);
+    }
+
+    33% {
+        transform: scale(0.52) translateX(38px);
+    }
+
+    45% {
+        transform: scale(0.57) translateX(32px);
+    }
+
+    100% {
+        transform: scale(0.57) translateX(0);
+    }
+}
+
+@keyframes flicking {
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -8,11 +8,30 @@
     }
 
     &-disclaimer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
         padding: 22px;
         border-radius: 2px;
-        color: $background;
-        background-color: $color;
+        color: $color;
+        background-color: $color-trans;
         user-select: none;
+
+        h4 {
+            margin: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        label {
+            min-width: 52px;
+        }
     }
 
     &-whiteboard {

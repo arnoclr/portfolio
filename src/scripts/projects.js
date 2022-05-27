@@ -21,7 +21,7 @@ const draggableProjects = new DraggableScrollArea(slider);
 draggableProjects.hideOnEnd(forwardsButton);
 
 forwardsButton.addEventListener('click', () => {
-  draggableProjects.forwards()
+  draggableProjects.forwards();
 });
 
 const writeUrl = (projectName = null) => {
@@ -30,17 +30,17 @@ const writeUrl = (projectName = null) => {
     url += "&open=" + projectName.replace("p:", "");
   }
   window.history.replaceState(null, null, url);
-}
+};
 
 const logProjectViewEvent = (projectName, seconds = 0) => {
   if (seconds == 0) {
     writeUrl(projectName);
   }
-}
+};
 
 const incrementSeconds = () => {
   seconds++;
-}
+};
 
 const closeProject = async () => {
   if (openedProjectName == null) return;
@@ -52,12 +52,12 @@ const closeProject = async () => {
   writeUrl();
 
   sessionStorage.removeItem('js-opened-project');
-  
+
   // animation
-  const page = document.getElementById(openedProjectName)
+  const page = document.getElementById(openedProjectName);
   document.body.style.overflow = '';
 
-  let {finished, cancel} = illusory(page, openedImg, {
+  let { finished, cancel } = illusory(page, openedImg, {
     duration: '.25s',
     easing: 'cubic-bezier(.45,-0.01,0,.9)',
     compositeOnly: true,
@@ -66,9 +66,9 @@ const closeProject = async () => {
 
   openedProjectName = null;
   const canceled = await finished;
-  
+
   pages.style.display = 'none';
-}
+};
 
 projectsBoxes.forEach(box => {
   let img = box.querySelector('img');
@@ -100,9 +100,9 @@ projectsBoxes.forEach(box => {
     // animation
     const page = document.getElementById(box.dataset.to);
     pages.style.display = 'flex';
-    page.scrollIntoView({behavior: 'instant'});
+    page.scrollIntoView({ behavior: 'instant' });
 
-    let {finished, cancel} = illusory(openedImg, page, {
+    let { finished, cancel } = illusory(openedImg, page, {
       duration: '.3s',
       easing: 'cubic-bezier(.45,-0.01,0,.9)',
       compositeOnly: true,
@@ -112,8 +112,8 @@ projectsBoxes.forEach(box => {
     const canceled = await finished;
 
     document.body.style.overflow = 'hidden';
-  })
-})
+  });
+});
 
 let backBtn = document.querySelector('.js-close-pages');
 
@@ -131,9 +131,8 @@ pages.addEventListener('scroll', () => {
     seconds = 0;
     logProjectViewEvent(openedProjectName);
   }
-})
+});
 
-let lastScrollTop = 0;
 projectsContent.forEach(page => {
   const caroussel = page.querySelector('.js-projectcaroussel');
 
@@ -143,16 +142,8 @@ projectsContent.forEach(page => {
     } else {
       caroussel.classList.remove('scrolled');
     }
-
-    if (page.scrollTop > lastScrollTop) {
-      hideNotificationPopup();
-    } else {
-      showNotificationPopup();
-    }
-
-    lastScrollTop = page.scrollTop;
-  })
-})
+  });
+});
 
 const nextBtns = document.querySelectorAll('.js-next-project');
 
@@ -165,12 +156,12 @@ nextBtns.forEach(btn => {
       behavior: 'smooth'
     });
   });
-})
+});
 
 backBtn.addEventListener('click', e => {
   e.preventDefault();
   closeProject();
-})
+});
 
 document.addEventListener('keydown', e => {
   if (e.key === "Escape") {
@@ -186,7 +177,7 @@ projectsContent.forEach(content => {
       seconds = 0;
     }
   });
-})
+});
 
 imagesSliders.forEach(slider => {
   const caroussel = new DraggableScrollArea(slider);
