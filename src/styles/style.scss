@@ -21,14 +21,14 @@
 
 @font-face {
     font-family: Nimbus Sans;
-    src: local('Arial'), url("/static/fonts/NimbusSanL-Bol.otf");
+    src: url("/static/fonts/NimbusSanL-Bol.otf");
     font-display: swap;
     font-weight: 600;
 }
 
 @font-face {
     font-family: Nimbus Sans;
-    src: local('Arial'), url("/static/fonts/NimbusSanL-Reg.otf");
+    src: url("/static/fonts/NimbusSanL-Reg.otf");
     font-display: swap;
     font-weight: 400;
 }
@@ -64,6 +64,10 @@ a {
     font-size: 16px;
     line-height: 18px;
     text-decoration: none;
+    letter-spacing: -0.3px;
+}
+
+small {
     letter-spacing: -0.3px;
 }
 
@@ -515,7 +519,7 @@ a:hover {
             border-top: 1px solid $color;
             font-size: 56px;
             line-height: 46px;
-            letter-spacing: -1px;
+            letter-spacing: -1.6px;
             color: $color;
 
             &:first-child {
@@ -524,6 +528,7 @@ a:hover {
 
             &-number {
                 font-size: 72px;
+                letter-spacing: -3px;
                 color: #000;
                 text-decoration: none;
             }
@@ -542,6 +547,7 @@ a:hover {
             &-number {
                 font-size: 52px;
                 line-height: 48px;
+                letter-spacing: -2px;
             }
         }
     }
@@ -635,6 +641,7 @@ a:hover {
 
         &__item {
             video {
+                position: relative;
                 opacity: 0.6;
 
                 &:hover {

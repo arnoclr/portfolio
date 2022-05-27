@@ -10,6 +10,7 @@ $transition: $duration $bezier;
     display: block;
     height: 32px;
     width: 52px;
+    cursor: pointer;
 
     &--loading {
         pointer-events: none;
