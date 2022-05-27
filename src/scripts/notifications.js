@@ -39,13 +39,15 @@ const subscribeUser = async () => {
             localStorage.setItem('notificationToken', token);
             checkbox.checked = true;
 
-            const sampleNotification = new Notification('Parfait !', {
-                body: "Vous recevrez une notification comme celle-ci lorsque des nouveautés seront ajoutées sur mon portfolio.",
-            });
+            try {
+                const sampleNotification = new Notification('Parfait !', {
+                    body: "Vous recevrez une notification comme celle-ci lorsque des nouveautés seront ajoutées sur mon portfolio.",
+                });
 
-            setTimeout(() => {
-                sampleNotification.close();
-            }, 6000);
+                setTimeout(() => {
+                    sampleNotification.close();
+                }, 6000);
+            } catch (e) { }
         } else {
             alert("Une erreur est survenue au moment de l'activation");
         }
