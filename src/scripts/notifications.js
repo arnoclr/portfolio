@@ -77,8 +77,6 @@ activationSwitch.addEventListener('click', async () => {
     activationSwitch.classList.remove('ac-switch--loading');
 });
 
-console.log(currentToken);
-
 if (isSubscribed()) {
     checkbox.checked = true;
 }
