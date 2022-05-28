@@ -1,4 +1,4 @@
-import { getToken, deleteToken, isSupported } from "firebase/messaging";
+import { getToken, deleteToken } from "firebase/messaging";
 import { messaging } from "./firebase";
 
 const VAPID_KEY = 'BIJf564X3t7wur264Hj_A8eWLVw3-CNSbLZVp086Pdg_yjGd2Mb4HBPk-aVe7MUazNVp1OWbvZcP_FRyk767jeM';
@@ -62,7 +62,7 @@ const hasGranted = () => {
 };
 
 const canShowNotificationPopup = () => {
-    return Notification.permission !== "denied" && isSupported();
+    return Notification.permission !== "denied" && messaging;
 };
 
 const isSubscribed = () => {
