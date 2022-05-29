@@ -10,6 +10,8 @@ const scrollable = document.querySelector('.js-notif-scrollarea');
 const banner = document.querySelector('.js-notif-banner');
 const bannerPlaceholder = document.querySelector('.js-notif-banner-placeholder');
 
+let isBannerFixed = false;
+
 const requestNotificationPermission = async () => {
     let currentToken = false;
 
@@ -73,11 +75,15 @@ const isSubscribed = () => {
 };
 
 const fixBanner = () => {
+    if (isBannerFixed) return;
+    isBannerFixed = true;
     bannerPlaceholder.style.height = banner.offsetHeight + 'px';
     banner.classList.add('ac-notifbanner--fixed');
 };
 
 const unfixBanner = () => {
+    if (!isBannerFixed) return;
+    isBannerFixed = false;
     bannerPlaceholder.style.height = null;
     banner.classList.remove('ac-notifbanner--fixed');
 };
@@ -93,7 +99,7 @@ activationSwitch.addEventListener('click', async () => {
 });
 
 scrollable.addEventListener('scroll', () => {
-    if (scrollable.scrollTop > 300) {
+    if (scrollable.scrollTop > 400) {
         fixBanner();
     } else {
         unfixBanner();
