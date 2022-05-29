@@ -39,24 +39,6 @@ body {
     font-family: Nimbus Sans, Arial, sans-serif;
     letter-spacing: -0.05em;
     background-color: $background;
-    background-image: url('/static/img/blur.png');
-    background-repeat: no-repeat;
-    background-size: 400% 400%;
-    animation: backgroundRotate 10s ease infinite;
-}
-
-@keyframes backgroundRotate {
-    0% {
-        background-position: 0 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0 50%;
-    }
 }
 
 p,
@@ -485,9 +467,13 @@ a:hover {
         @media screen and (max-width: 768px) {
             overflow-x: scroll;
 
+            &__back {
+                top: 16px;
+                left: 16px;
+            }
+
             &__page {
                 display: block;
-                overflow-y: scroll;
 
                 &-content {
                     width: 100vw;

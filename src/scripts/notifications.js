@@ -6,6 +6,9 @@ const VAPID_KEY = 'BIJf564X3t7wur264Hj_A8eWLVw3-CNSbLZVp086Pdg_yjGd2Mb4HBPk-aVe7
 const activationSwitch = document.querySelector('.js-notif-switch');
 const checkbox = activationSwitch.querySelector('input');
 const backdrop = document.querySelector('.js-notif-backdrop');
+const scrollable = document.querySelector('.js-notif-scrollarea');
+const banner = document.querySelector('.js-notif-banner');
+const bannerPlaceholder = document.querySelector('.js-notif-banner-placeholder');
 
 const requestNotificationPermission = async () => {
     let currentToken = false;
@@ -69,6 +72,16 @@ const isSubscribed = () => {
     return Notification.permission === "granted" && localStorage.getItem('notificationToken');
 };
 
+const fixBanner = () => {
+    bannerPlaceholder.style.height = banner.offsetHeight + 'px';
+    banner.classList.add('ac-notifbanner--fixed');
+};
+
+const unfixBanner = () => {
+    bannerPlaceholder.style.height = null;
+    banner.classList.remove('ac-notifbanner--fixed');
+};
+
 activationSwitch.addEventListener('click', async () => {
     activationSwitch.classList.add('ac-switch--loading');
     if (isSubscribed()) {
@@ -79,6 +92,14 @@ activationSwitch.addEventListener('click', async () => {
     activationSwitch.classList.remove('ac-switch--loading');
 });
 
+scrollable.addEventListener('scroll', () => {
+    if (scrollable.scrollTop > 300) {
+        fixBanner();
+    } else {
+        unfixBanner();
+    }
+});
+
 if (isSubscribed()) {
     checkbox.checked = true;
-}
+};

@@ -1,84 +1,57 @@
-.ac-notifications-banner {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    bottom: 0;
-    left: var(--padding);
-    right: var(--padding);
-    background-color: $color;
-    padding: 8px 16px;
-    transform: translateY(110%);
-    transition: transform .3s ease-in-out;
-    z-index: 9;
+.ac-notifbanner {
+    position: relative;
+    border-radius: 2px;
+    color: $color;
+    background-color: $background;
+    user-select: none;
 
-    &--visible {
-        transform: translateY(0);
-    }
-
-    &__text {
-        color: $background;
-        user-select: none;
-    }
-
-    &__enable {
-        height: 48px;
-        padding: 0 12px;
-        font-size: 16px;
-        font-weight: 600;
-        color: $background;
-        background-color: transparent;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    &-backdrop {
+    &--fixed {
         position: fixed;
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 10;
-        display: grid;
-        place-items: center;
-
-        &__wrapper {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 52px;
-            user-select: none;
-        }
-
-        &__text {
-            color: #fff;
-            font-size: 24px;
-            text-align: center;
-        }
-
-        i {
-            color: #fff;
-            font-size: 78px;
-        }
-
-        &__south {
-            opacity: 0;
-        }
-    }
-
-    @media (max-width: 768px) {
+        top: 0;
         left: 0;
         right: 0;
+        z-index: 8;
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+        animation: notifbanner-enter .25s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
 
-        &-backdrop {
-            &__south {
-                opacity: 1;
-            }
+    &--fixed &__inner {
+        padding: 16px var(--padding);
+    }
 
-            &__north {
-                opacity: 0;
-            }
-        }
+    &__inner {
+        padding: 22px;
+        background-color: $color-trans;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    h4 {
+        margin: 0;
+        margin-bottom: 12px;
+        font-family: Nimbus Sans;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    label {
+        min-width: 52px;
+    }
+}
+
+@keyframes notifbanner-enter {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
     }
 }

@@ -7,34 +7,6 @@
         font-size: 32px;
     }
 
-    &-disclaimer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 22px;
-        border-radius: 2px;
-        color: $color;
-        background-color: $color-trans;
-        user-select: none;
-
-        h4 {
-            margin: 0;
-            margin-bottom: 12px;
-            font-family: Nimbus Sans;
-            font-weight: 600;
-            font-size: 20px;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        label {
-            min-width: 52px;
-        }
-    }
-
     &-whiteboard {
         display: flex;
         gap: 8px;
@@ -102,7 +74,7 @@
 
     @media (max-width: 768px) {
         h1 {
-            margin-top: 78px;
+            margin-top: 48px;
         }
     }
 }
