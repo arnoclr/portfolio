@@ -1,3 +1,4 @@
+import "./lazyImages";
 import "./projects";
 import "./boxes";
 import { showPhoneNumber } from "./tel";
@@ -9,11 +10,11 @@ translateDocument();
 const videos = document.querySelectorAll('video');
 
 videos.forEach(video => {
-  video.addEventListener("mouseover", function() {
+  video.addEventListener("mouseover", function () {
     this.play();
   });
-  
-  video.addEventListener("mouseleave", function() {
+
+  video.addEventListener("mouseleave", function () {
     this.pause();
   });
 });
@@ -32,7 +33,7 @@ if (sessionStorage.getItem('__active_session')) {
 
 let referrer = "direct";
 if (document.referrer) {
-  let url = document.referrer; 
+  let url = document.referrer;
   referrer = url.match(/:\/\/(.[^/]+)/)[1];
 }
 
@@ -52,7 +53,7 @@ const urlParams = new URLSearchParams(window.location.search);
 let utmData = {
   s: urlParams.get('utm_source') || urlParams.get('u') || referrer,
   ts: timestamp
-}
+};
 
 // si l'ancien referrer a été inscrit il y a plus d'un mois, on remplace par le nouveau
 if (tsGap > timestamp + 60 * 60 * 24 * 30 && utmData.s != "direct") {
@@ -95,6 +96,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const projectId = "p:" + urlParams.get('open');
     document.querySelector(`[data-to='${projectId}']`).click();
   }
-  
+
   sessionStorage.setItem('__active_session', 0);
 });
