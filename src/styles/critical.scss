@@ -1,0 +1,371 @@
+@import "./vars.scss";
+
+:root {
+    --padding: 16px;
+}
+
+@media screen and (min-width: 768px) {
+    :root {
+        --padding: 8vw;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Nimbus Sans, Arial, sans-serif;
+    letter-spacing: -0.05em;
+    background-color: $background;
+}
+
+p,
+a {
+    font-size: 16px;
+    line-height: 18px;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+}
+
+small {
+    letter-spacing: -0.3px;
+}
+
+a {
+    border-bottom: 1px dotted $color;
+}
+
+.ac {
+    @keyframes pattern-hide {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes pattern-enter {
+        0% {
+            transform: translate3D(100%, 125%, 0);
+            opacity: 0;
+        }
+
+        20% {
+            opacity: 0.8;
+        }
+
+        40% {
+            opacity: 0.4;
+        }
+
+        60% {
+            opacity: 0.6;
+        }
+
+        80% {
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: translate3D(0, 0, 0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes header-fadein {
+        0% {
+            transform: translate3d(-2%, 0, 0);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+
+    &-topbox {
+        position: relative;
+        overflow: hidden;
+
+        &__pattern {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.8;
+
+            @media screen and (max-width: 1349px) {
+                opacity: 0;
+            }
+
+            @media screen and (min-width: 1350px) {
+                animation: pattern-hide .2s linear, pattern-enter 1.2s linear .2s;
+                animation-timing-function: steps(5);
+            }
+        }
+    }
+
+    &-header {
+        padding: var(--padding);
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        animation: pattern-hide .2s, header-fadein .3s cubic-bezier(.2, .96, .21, .96) .2s forwards;
+
+        &__title {
+            font-size: 5rem;
+            line-height: 70px;
+            font-weight: 400;
+            font-family: Nimbus Sans, Arial, sans-serif;
+            letter-spacing: -4px;
+            margin: 0;
+        }
+
+        &__groups {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 48px;
+            position: relative;
+
+            &-item {
+                p {
+                    font-size: 20px;
+                    line-height: 22px;
+                }
+
+                &-btns {
+                    display: flex;
+                    gap: 4px;
+                }
+            }
+
+            &-arrow {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                font-size: 90px !important;
+                cursor: pointer;
+            }
+
+            @media screen and (max-width: 1000px) {
+                grid-template-columns: 1fr;
+                gap: 0;
+
+                p {
+                    margin: 0;
+                    margin-bottom: 16px;
+                }
+
+                &-arrow {
+                    display: none !important;
+                }
+            }
+        }
+
+        &__links {
+            display: flex;
+            gap: 16px;
+
+            &-link {
+                color: $color;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            margin: 64px 16px;
+        }
+    }
+
+    &-projects {
+        padding: 32px 0;
+        background-color: #000;
+
+        &__title {
+            margin: 32px var(--padding);
+            margin-bottom: 8px;
+            font-weight: 400;
+            font-size: 4rem;
+            letter-spacing: -2px;
+            color: $background
+        }
+
+        &__description {
+            margin: 0 var(--padding);
+            margin-bottom: 32px;
+            font-size: 20px;
+            line-height: 22px;
+            color: $background;
+        }
+    }
+
+    &-slider {
+        position: relative;
+        display: flex;
+        width: 100%;
+        overflow-x: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &__item {
+            position: relative;
+            display: flex;
+            text-decoration: none;
+            border: none;
+            cursor: unset;
+
+            &:hover {
+                border: none;
+            }
+
+            &:focus-visible {
+                outline: 2px solid #fff;
+                opacity: 0.5;
+            }
+
+            &:first-child {
+                padding-left: var(--padding);
+            }
+
+            &-img {
+                width: $image-width;
+                height: 450px;
+                object-fit: cover;
+                object-position: bottom;
+                cursor: pointer;
+                user-select: none;
+                -webkit-user-drag: none;
+                transform: scale(1);
+                transition: transform .2s cubic-bezier(.15, -0.23, .43, 1.25);
+                cursor: zoom-in;
+
+                &:hover {
+                    outline: 2px dotted $background;
+                }
+
+                &:active {
+                    transform: scale(.97);
+                }
+            }
+
+            &-title {
+                margin-left: 8px;
+                font-size: 1.6rem;
+                font-weight: 400;
+                writing-mode: vertical-lr;
+                text-align: end;
+                color: $background;
+                user-select: none;
+            }
+
+            &-badge {
+                position: absolute;
+                top: 16px;
+                left: 16px;
+                font-size: 12px;
+                font-weight: 400;
+                padding: 6px 10px;
+                border-radius: 4px;
+                background-color: $color;
+                color: $background;
+                pointer-events: none;
+                user-select: none;
+            }
+
+            /* animations */
+            @for $i from 1 through 5 {
+                &:nth-child(#{$i}) {
+                    animation: hide (($i)-1) * 0.1s, slide-in-from-left (6-($i)) * 0.1s cubic-bezier(.32, .21, 0, .97) (($i)-1) * 0.1s;
+                }
+            }
+        }
+    }
+
+    @keyframes slide-in-from-left {
+        0% {
+            transform: translateX(-25%);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes hide {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    &-btn {
+        padding: 12px 24px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background-color: $background-surface;
+        color: $color;
+        font-size: 18px;
+        text-decoration: none;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        cursor: pointer;
+        transform: scale(1);
+        transition: transform .2s ease;
+
+        &:hover {
+            span {
+                text-decoration: underline;
+            }
+        }
+
+        &:active {
+            transform: scale(.97);
+        }
+
+        &[aria-disabled="true"] {
+            pointer-events: none;
+            user-select: none;
+            opacity: 0.5;
+        }
+
+        &--colored {
+            background-color: $color;
+            color: $background;
+        }
+
+        &--outlined {
+            background-color: transparent;
+            border: 1px solid $color;
+        }
+
+        &--transparent {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        &--onsurface {
+            background-color: rgba(0, 0, 0, 0.09);
+        }
+
+        &--small {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+    }
+}

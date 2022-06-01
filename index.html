@@ -13,8 +13,7 @@
     <meta property="og:image" content="https://arnocellarier.fr/preview.jpg">
     <meta property="twitter:card" content="summary_large_image">
 
-    <link rel="stylesheet" href="/src/styles/style.scss">
-    <link rel="stylesheet" href="/src/styles/comic.scss">
+    <link rel="stylesheet" href="/src/styles/critical.scss">
     <link rel="shortcut icon" href="/static/favicon.png" type="image/png">
     <script src="/src/scripts/app.js" type="module" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -227,11 +226,10 @@
                 fr="Informations légales">Imprint</a></p>
     </footer>
 
-    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap">
-    </noscript>
+    <!-- deferred style load -->
+    <link rel="stylesheet" href="/src/styles/style.scss">
+    <link rel="stylesheet" href="/src/styles/comic.scss">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap">
 
 </body>
 
