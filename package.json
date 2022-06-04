@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "npm run build-legacy && uglify-classes --method hash:5 --prefix ac-",
-    "build-legacy": "parcel build firebase-messaging-sw.js index.html 404.html & cp _redirects dist",
+    "build-legacy": "parcel build firebase-messaging-sw.js index.html 404.html && cp _redirects dist",
     "dev": "parcel build firebase-messaging-sw.js && npx parcel"
   },
   "repository": {
