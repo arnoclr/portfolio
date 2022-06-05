@@ -15,8 +15,9 @@
   },
   "scripts": {
     "build": "npm run build-legacy && uglify-classes --method hash:5 --prefix ac-",
-    "build-legacy": "parcel build firebase-messaging-sw.js index.html --public-url /static/ 404.html && cp _redirects dist && cp firebase-messaging-sw.js dist/static",
-    "dev": "parcel build firebase-messaging-sw.js && npx parcel"
+    "build-legacy": "parcel build index.html --public-url /static/ 404.html && cp _redirects dist && npm run move-to-static",
+    "dev": "parcel build firebase-messaging-sw.js && npx parcel",
+    "move-to-static": "cp firebase-messaging-sw.js dist/static && mv dist/* dist/static/ && mv dist/static/index.html dist"
   },
   "repository": {
     "type": "git",
