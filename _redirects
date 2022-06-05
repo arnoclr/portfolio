@@ -1,1 +1,2 @@
+/firebase-messaging-sw.js /static/firebase-messaging-sw.js
 /:shortId https://link.arnocellarier.fr/:shortId
