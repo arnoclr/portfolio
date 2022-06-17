@@ -98,13 +98,13 @@ activationSwitch.addEventListener('click', async () => {
     activationSwitch.classList.remove('ac-switch--loading');
 });
 
-scrollable.addEventListener('scroll', () => {
-    if (scrollable.scrollTop > 400) {
-        fixBanner();
-    } else {
-        unfixBanner();
-    }
-});
+// scrollable.addEventListener('scroll', () => {
+//     if (scrollable.scrollTop > 400) {
+//         fixBanner();
+//     } else {
+//         unfixBanner();
+//     }
+// });
 
 if (isSubscribed()) {
     checkbox.checked = true;

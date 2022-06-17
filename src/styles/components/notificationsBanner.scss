@@ -20,7 +20,7 @@
     }
 
     &__inner {
-        padding: 22px;
+        padding: 22px var(--padding);
         background-color: $color-trans;
         border-radius: 2px;
         display: flex;

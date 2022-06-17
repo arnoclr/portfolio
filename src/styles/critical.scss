@@ -190,20 +190,11 @@ a {
         background-color: #000;
 
         &__title {
-            margin: 32px var(--padding);
-            margin-bottom: 8px;
+            margin: 22px var(--padding);
             font-weight: 400;
-            font-size: 4rem;
+            font-size: 3rem;
             letter-spacing: -2px;
             color: $background
-        }
-
-        &__description {
-            margin: 0 var(--padding);
-            margin-bottom: 32px;
-            font-size: 20px;
-            line-height: 22px;
-            color: $background;
         }
     }
 
