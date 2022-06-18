@@ -181,7 +181,25 @@ a {
         }
 
         @media screen and (max-width: 768px) {
-            margin: 64px 16px;
+            margin: 32px 0;
+
+            &__title {
+                font-size: 92px;
+                line-height: 76px;
+                letter-spacing: -5px;
+            }
+
+            &__groups-item-btns {
+                flex-direction: column;
+
+                .ac-btn {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-sizing: border-box;
+                }
+            }
         }
     }
 
