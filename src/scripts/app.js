@@ -1,6 +1,7 @@
 import "./lazyImages";
 import "./projects";
 import "./boxes";
+import "./notifications";
 import { showPhoneNumber } from "./tel";
 import { translateDocument } from "./translations";
 

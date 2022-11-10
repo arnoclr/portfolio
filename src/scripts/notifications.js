@@ -6,11 +6,7 @@ const VAPID_KEY = 'BIJf564X3t7wur264Hj_A8eWLVw3-CNSbLZVp086Pdg_yjGd2Mb4HBPk-aVe7
 const activationSwitch = document.querySelector('.js-notif-switch');
 const checkbox = activationSwitch.querySelector('input');
 const backdrop = document.querySelector('.js-notif-backdrop');
-const scrollable = document.querySelector('.js-notif-scrollarea');
 const banner = document.querySelector('.js-notif-banner');
-const bannerPlaceholder = document.querySelector('.js-notif-banner-placeholder');
-
-let isBannerFixed = false;
 
 const requestNotificationPermission = async () => {
     let currentToken = false;
@@ -62,30 +58,21 @@ const subscribeUser = async () => {
     }
 };
 
+const isSupported = () =>
+    'Notification' in window &&
+    'serviceWorker' in navigator &&
+    'PushManager' in window;
+
 const hasGranted = () => {
-    return Notification.permission === "granted";
+    return isSupported() && Notification.permission === "granted";
 };
 
 const canShowNotificationPopup = () => {
-    return Notification.permission !== "denied" && messaging;
+    return isSupported() && Notification.permission !== "denied" && messaging;
 };
 
 const isSubscribed = () => {
-    return Notification.permission === "granted" && localStorage.getItem('notificationToken');
-};
-
-const fixBanner = () => {
-    if (isBannerFixed) return;
-    isBannerFixed = true;
-    bannerPlaceholder.style.height = banner.offsetHeight + 'px';
-    banner.classList.add('ac-notifbanner--fixed');
-};
-
-const unfixBanner = () => {
-    if (!isBannerFixed) return;
-    isBannerFixed = false;
-    bannerPlaceholder.style.height = null;
-    banner.classList.remove('ac-notifbanner--fixed');
+    return isSupported() && Notification.permission === "granted" && localStorage.getItem('notificationToken');
 };
 
 activationSwitch.addEventListener('click', async () => {
@@ -98,14 +85,10 @@ activationSwitch.addEventListener('click', async () => {
     activationSwitch.classList.remove('ac-switch--loading');
 });
 
-// scrollable.addEventListener('scroll', () => {
-//     if (scrollable.scrollTop > 400) {
-//         fixBanner();
-//     } else {
-//         unfixBanner();
-//     }
-// });
-
 if (isSubscribed()) {
     checkbox.checked = true;
 };
+
+if (!isSupported()) {
+    banner.style.display = 'none';
+}

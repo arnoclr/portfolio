@@ -1,10 +1,8 @@
 import { illusory } from "illusory";
 import { isFrench } from "./translations";
-import { showNotificationPopup, hideNotificationPopup } from "./notifications";
 import DraggableScrollArea from 'draggable-scrollarea';
 
 const projectsBoxes = document.querySelectorAll('.js-project');
-const projects = document.querySelector('.js-projects');
 const slider = document.querySelector('.js-slider');
 const pages = document.querySelector('.js-pages');
 const projectsContent = document.querySelectorAll('.js-page-content');
