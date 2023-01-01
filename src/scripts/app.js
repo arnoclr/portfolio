@@ -99,4 +99,16 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   sessionStorage.setItem('__active_session', 0);
+
+  const as = document.querySelectorAll('a');
+  as.forEach(a => {
+    console.log(a.href);
+    if (/\/[a-z]{4}[0-9]{0,2}$/i.test(a.href)) {
+      let hostname = window.location.hostname;
+      if (window.location.port) {
+        hostname += ":" + window.location.port;
+      }
+      a.href = a.href.replace(hostname, "arno.cl");
+    }
+  });
 });
