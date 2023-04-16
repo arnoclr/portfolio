@@ -4,6 +4,7 @@ import "./boxes";
 import "./notifications";
 import { showPhoneNumber } from "./tel";
 import { translateDocument } from "./translations";
+import { archivedProjects } from "./archivedProjects";
 
 translateDocument();
 
@@ -94,7 +95,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // open project passed in url
   if (urlParams.has('open')) {
-    const projectId = "p:" + urlParams.get('open');
+    const rawId = urlParams.get('open');
+
+    if (archivedProjects[rawId]) {
+      window.location.href = archivedProjects[rawId].to;
+      return;
+    }
+
+    const projectId = "p:" + rawId;
     document.querySelector(`[data-to='${projectId}']`).click();
   }
 

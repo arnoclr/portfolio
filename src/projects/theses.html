@@ -1,0 +1,119 @@
+<section class="ac-projects-details__page" id="p:theses">
+    <div class="ac-projects-details__page-content js-page-content">
+        <div class="ac-projectcaroussel js-projectcaroussel">
+            <div class="ac-projectcaroussel__content">
+                <img loading="lazy" class="ac-projectcaroussel__content-img"
+                    src="/static/img/theses/1.png?as=webp&quality=60">
+                <img loading="lazy" class="ac-projectcaroussel__content-img"
+                    src="/static/img/theses/2.png?as=webp&quality=60">
+                <img loading="lazy" class="ac-projectcaroussel__content-img"
+                    src="/static/img/theses/3.png?as=webp&quality=60">
+                <img loading="lazy" class="ac-projectcaroussel__content-img"
+                    src="/static/img/theses/4.png?as=webp&quality=60">
+                <img loading="lazy" class="ac-projectcaroussel__content-img"
+                    src="/static/img/theses/5.png?as=webp&quality=60">
+                <img loading="lazy" class="ac-projectcaroussel__content-img"
+                    src="/static/img/theses/6.png?as=webp&quality=60">
+            </div>
+        </div>
+        <aside class="ac-projectcaroussel__placeholder"></aside>
+
+        <div class="ac-textcontent">
+            <h2>Projet thèses</h2>
+            <p>L'objectif de ce projet, réalisé sur deux semestres, est de créer un site en PHP repertoriant toutes les
+                thèses soutenues en France depuis 1985. Pour cela, on s'appuie sur un jeu de données publique disponible
+                sur datagouv.</p>
+
+            <p>Le premier objectif du projet consiste à transferer les données dans une base de données SQL pour les
+                exploiter ensuite sur le site. Le tout est réalisé à l'aide d'un script d'importation codé en PHP, qui
+                permet d'importer ligne par ligne les thèses contenues dans le fichier JSON de 2 Go.</p>
+
+            <p>A l'aide de ces données, on affiche quelques graphiques et informations sur le total des thèses contenues
+                dans la base de données. On peut aussi afficher des graphiques et des résultats en fonction d'une
+                recherche, plus ou moins précise.</p>
+
+            <ul class="ac-keynumbers">
+                <li class="ac-keynumbers__row">
+                    <ins class="ac-keynumbers__row-number">
+                        <abbr title="~10% total">44 898</abbr>
+                    </ins>
+                    <span fr="thèses repertoriées">repertoried</span>
+                </li>
+            </ul>
+
+            <h3 class="ac-features-title">fonctionnalités principales</h3>
+            <div class="ac-features">
+                <div class="ac-features__item">
+                    <img class="ac-features__item-img" src="/static/img/theses/3.png">
+                    <div class="ac-features__item-content">
+                        <h3 class="ac-features__item-content-title" fr="Recherche localisée">Localised search</h3>
+                        <p class="ac-features__item-content-text">En entrant un nom de ville, vous accédez aux thèses
+                            soutenues dans cette ville. Il est possible de localiser une recherche en passant par la
+                            recherche avancée.</p>
+                    </div>
+                </div>
+                <div class="ac-features__item">
+                    <img class="ac-features__item-img" src="/static/img/theses/5.png">
+                    <div class="ac-features__item-content">
+                        <h3 class="ac-features__item-content-title" fr="Comparer plusieurs recherches">Compare searches
+                        </h3>
+                        <p class="ac-features__item-content-text">Comparez les statistiques globales de plusieurs
+                            recherches à la fois, jusqu'à 4 comparaisons.</p>
+                    </div>
+                </div>
+                <div class="ac-features__item">
+                    <img class="ac-features__item-img" src="/static/img/theses/4.png">
+                    <div class="ac-features__item-content">
+                        <h3 class="ac-features__item-content-title" fr="Créer des alertes">Create alerts</h3>
+                        <p class="ac-features__item-content-text">Entrez votre adresse email sur une recherche pour
+                            recevoir un mail lorsque de nouvelles thèses seront publiées sur ce domaine.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Résultats de recherche</h3>
+            <p>Le gros travail sur le site a été l'affichage des résultats de recherche. J'ai voulu, pour rendre les
+                informations claires, reproduire une interface style moteur de recherche, et axer tout mon site sur la
+                recherche.</p>
+
+            <p>Chaque résultat peut être affiché differemment en fonction du contexte. Par exemple, lorsque la
+                description contient les mots de la recherche, ils sont surlignés dans le texte. Quand il s'agit des
+                sujets, une liste de tous les sujets est affichée. Les sommaires contenus dans le resumé de chaque
+                thèses est aussi automatiquement detecté pour fourni un affichage par puces numérotées.</p>
+
+            <h3>Images</h3>
+            <p>Certains résultats inclus des images. Cela peut paraitre simple, mais il était compliqué de récuperer des
+                images pour un thèse donnée. En effet, il n'existe aucune image dans le jeu de données, elles
+                proviennent en fait du PDF, qui est scrappé par le site, dans le cas des thèses qui sont disponibles sur
+                internet.</p>
+
+            <p>Le processus de scrapping etant très lourd, une mise en cache a été necessaire. Au dela de ca, le
+                processus était tellement long qu'il a aussi fallu l'appeler après le chargement des résultats de
+                recherche. Les images chargent donc indépendamment du reste.</p>
+
+            <h3>Par auteur</h3>
+            <p>En tapant le nom d'un auteur, on retrouve toutes les thèses qu'il a soutenues. De plus, on peut filtrer
+                chaque recherche en fonction d'un auteur à l'aide de la recherche avancée.</p>
+
+            <ul class="ac-keynumbers">
+                <li class="ac-keynumbers__row">
+                    <ins class="ac-keynumbers__row-number">44 545</ins>
+                    <span fr="auteurs">authors</span>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="ac-projects-details__page-content-actions">
+            <a target="_blank" rel="nofollow" class="ac-btn ac-btn--colored" aria-disabled="true">Visiter
+                le site <i class="material-icons-sharp">launch</i></a>
+            <a class="ac-btn js-next-project">Projet suivant : Kpp Maker <i
+                    class="material-icons-sharp">arrow_forward</i></a>
+        </div>
+
+        <div style="padding-top: 0;" class="ac-projects-details__page-content-actions">
+            <small>Bientôt dispo. Activez les notifications (page d'accueil) pour recevoir un rappel.</small>
+        </div>
+    </div>
+</section>

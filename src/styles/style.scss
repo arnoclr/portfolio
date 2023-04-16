@@ -176,6 +176,10 @@ a:hover {
     &-textcontent {
         padding: 32px;
 
+        >p {
+            max-width: 500px;
+        }
+
         @media screen and (max-width: 768px) {
             padding: 16px;
         }
@@ -310,6 +314,10 @@ a:hover {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 32px;
+
+        +h3 {
+            margin-top: 64px;
+        }
 
         &__item {
             video {
